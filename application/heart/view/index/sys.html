@@ -1,0 +1,143 @@
+{extend name="content"/}
+
+{block name="style"}
+<style>
+    body {
+        margin: 20px 20px 0 20px;
+    }
+    table {
+        font-size: 14px;
+        margin-bottom: 20px;
+        width: 100%;
+        border-collapse: collapse;
+    }
+    table tr td,table tr th{
+        padding: 8px 10px;
+        border: 1px solid #70A8FF;
+    }
+    table tr th {
+        color: #888888;
+        letter-spacing: 3px;
+    }
+</style>
+{/block}
+
+{block name="con"}
+<table>
+    <colgroup>
+        <col width="40%">
+        <col>
+    </colgroup>
+    <thead>
+    <tr>
+        <th colspan="2">登录信息</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>当前用户姓名</td>
+        <td>{:session('user.name')}</td>
+    </tr>
+    <tr>
+        <td>最后登录时间</td>
+        <td>{:date('Y-m-d H:i:s', session('user.last_login_time'))}</td>
+    </tr>
+    <tr>
+        <td>最后登录ip</td>
+        <td>{:session('user.last_login_ip')}</td>
+    </tr>
+    <tr>
+        <td>用户登录次数</td>
+        <td>登录 {:session('user.num')} 次</td>
+    </tr>
+    </tbody>
+</table>
+<table>
+    <colgroup>
+        <col width="40%">
+        <col>
+    </colgroup>
+    <thead>
+    <tr>
+        <th class="text-center" colspan="2">系统信息</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>系统名称</td>
+        <td>{$app_name ?? ''}</td>
+    </tr>
+    <tr>
+        <td>系统版本</td>
+        <td>{$app_ver ?? ''}</td>
+    </tr>
+    <tr>
+        <td>底层框架版本</td>
+        <td>{$Think.const.THINK_VERSION}</td>
+    </tr>
+    <tr>
+        <td>服务器操作系统</td>
+        <td>{:php_uname('s')}</td>
+    </tr>
+    <tr>
+        <td>WEB运行环境</td>
+        <td>{:php_sapi_name()}</td>
+    </tr>
+    <tr>
+        <td>MySQL数据库版本</td>
+        <td>{$mysql_ver ?? ''}</td>
+    </tr>
+    <tr>
+        <td>运行PHP版本</td>
+        <td>{:phpversion()}</td>
+    </tr>
+    <tr>
+        <td>上传大小限制</td>
+        <td>{:ini_get('upload_max_filesize')}</td>
+    </tr>
+    <tr>
+        <td>POST大小限制</td>
+        <td>{:ini_get('post_max_size')}</td>
+    </tr>
+    </tbody>
+</table>
+<table>
+    <colgroup>
+        <col width="40%">
+        <col>
+    </colgroup>
+    <thead>
+    <tr>
+        <th class="text-center" colspan="2">产品团队</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>产品名称</td>
+        <td>{$pro_name ?? ''}</td>
+    </tr>
+    <tr>
+        <td>研发团队</td>
+        <td>{$team ?? ''}</td>
+    </tr>
+    <tr>
+        <td>BUG反馈</td>
+        <td>
+            <a target="_blank" href="https://18629435343@163.com">
+                18629435343@163.com
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>公司官网</td>
+        <td>
+            <a target="_blank" href="http://www.xayxyy.com">
+                http://www.xayxyy.com
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+{/block}
+
+{block name="script"}{/block}

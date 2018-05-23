@@ -1,0 +1,57 @@
+{extend name="content"/}
+
+{block name="style"}
+<style type="text/css">
+    table {
+        margin: 10px 0;
+        width: 100%;
+        font-size: 14px;
+        border-collapse: collapse;
+    }
+    table tr td,table tr th{
+        padding: 8px 10px;
+        border: 1px solid #70A8FF;
+    }
+    table tr th {
+        color: #5D5765;
+        background-color: #F2F2F2;
+        letter-spacing: 3px;
+    }
+    table tr td {
+        text-align: center;
+    }
+</style>
+{/block}
+
+{block name="con"}
+<div>
+    <a target="main" href="{:url('heart/Node/add')}" class="easyui-linkbutton" data-options="iconCls:'icon-add'">添加</a>
+</div>
+<table>
+    <thead>
+    <tr>
+        <th>排序</th>
+        <th>ID</th>
+        <th>节点名称</th>
+        <th>菜单名称</th>
+        <th>父节点</th>
+        <th>节点级别</th>
+        <th>是否显示</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+    </tr>
+    </tbody>
+</table>
+{/block}
+
+{block name="script"}{/block}
+
