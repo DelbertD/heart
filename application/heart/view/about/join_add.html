@@ -1,0 +1,73 @@
+{extend name="content"/}
+{block name="style"}
+{/block}
+{block name="con"}
+<div>
+    <div>
+        <form id="ff" action="{$url ?? ''}" method="post" onsubmit="return submitFun(this);">
+            <table cellpadding="5">
+                <colgroup>
+                    <col width="15%">
+                    <col width="85%">
+                </colgroup>
+                <tr>
+                    <td>职位名称:</td>
+                    <td><input type="text" name="name" class="required"></td>
+                </tr>
+                <tr>
+                    <td>职位摘要:</td>
+                    <td>
+                        <input type="text" name="abs" class="len" placeholder="格式例：   五险一金|周末双休|下午茶|加班补助" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>岗位要求:</td>
+                    <td>
+                        <textarea name="requirement" id="req" class="required" style="width: 90%"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>岗位职责:</td>
+                    <td>
+                        <textarea name="respons" class="required" id="resp" style="width: 90%"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>薪资待遇:</td>
+                    <td><input type="text" class="required" name="money" data-options="required:true"></td>
+                </tr>
+                <tr>
+                    <td>截止时间:</td>
+                    <td>
+                        <input name="etime" class="easyui-datebox required" data-options="formatter:myformatter,parser:myparser,currentText:'今天',closeText:'关闭'">
+                    </td>
+                </tr>
+                <tr>
+                    <td>是否显示:</td>
+                    <td>
+                        <input type="radio" name="is_show" value="1" checked>显示
+                        <input type="radio" name="is_show" value="0">隐藏
+                    </td>
+                </tr>
+                <tr>
+                    <td>排序:</td>
+                    <td><input type="text" name="sort" class="num"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="table_center">
+                        <input type="submit" class="easyui-linkbutton" value="添加职位">
+                        <input type="button" class="easyui-linkbutton" value="返回" onclick="goBack();">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+    var ue = UE.getEditor('abs');
+    var uereq = UE.getEditor('req');
+    var ueresp = UE.getEditor('resp');
+</script>
+{/block}

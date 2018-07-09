@@ -1,0 +1,310 @@
+.swiper-button-next{
+    width:20px;
+    height:20px;
+    border-radius:50%;
+}
+.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet{
+    background-color: #fff;
+    width:25px;
+    height:14px;
+    border-radius:3px;
+}
+.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet-active{
+    margin-top:50px;
+    width:14px;
+    height:14px;
+    border-radius:50%;
+    display: inline-block;
+}
+/*==================标题==================*/
+.titleContain{
+    width:100%;
+    text-align: center;
+    padding-top:40px;
+}
+.titleContain .sectionTitle,.soluteTitle{
+    font-size: 36px;
+    color: #333;
+    position: relative;
+    margin: 0;
+    padding: 20px 0;
+    width:100%;
+    text-align: center;
+}
+.titleContain .soluteTitle{
+    color:#FEFEFE;
+}
+.titleContain .sectionTitle::after {
+    content: '';
+    width: 70px;
+    height: 2px;
+    background: #6d80bc;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -35px;
+}
+.solutionTitle::after {
+    background:#fff;
+    content: '';
+    width: 70px;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -35px;
+}
+.titleContain .subTitle{
+    font-size: 24px;
+    color: #999;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+/*===================服务=================*/
+.inlineBlock{
+    display: inline-block;
+}
+.serviceCon{
+    width:90%;
+    margin:0 auto;
+    padding:40px 0;
+}
+.serviceCon .imgBox{
+    width:90%;
+    margin:0 auto;
+}
+.serviceCon .imgBox img{
+    width:100%;
+}
+.serviceCon .serviceInfo{
+    width:100%;
+    text-align: center;
+    color:#333;
+}
+.serviceCon .serviceInfo{
+    text-align: center;
+}
+.serviceCon .serviceInfo h3{
+    font-size: 24px;
+    margin-bottom: 20px;
+    padding: 0;
+}
+#solution{
+    background-color: #0F1515;
+    display: inline-block;
+}
+/*============服务轮播图=========*/
+#solutionBanner{
+    width:100%;
+}
+
+#solutionBanner .wrap {
+    width: 1200px;
+    margin: 100px auto;
+}
+#solutionBanner .slide {
+    height: 500px;
+    position: relative;
+}
+#solutionBanner .slide li {
+    position: absolute;
+    left: 200px;
+    top: 0;
+}
+#solutionBanner .slide li img {
+    width: 100%;
+}
+#solutionBanner .arrow {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    z-index: 1000;
+    width: 100%;
+}
+#solutionBanner .prev, .next {
+    width: 76px;
+    height: 112px;
+    position: absolute;
+    z-index: 99;
+}
+#solutionBanner .prev {
+    left: 0;
+    background: url(../images/prev.png) no-repeat;
+}
+#solutionBanner .next {
+    right: 0;
+    background-image: url(../images/next.png);
+}
+@media (max-width: 992px){
+    #solutionBanner .wrap {
+        width:90%;
+        height:300px;
+    }
+    #solutionBanner .slide{
+        height:300px;
+    }
+    #solutionBanner .arrow{
+        top:30%;
+        opacity: 1;
+    }
+    #solutionBanner .prev{
+        left:-20px;
+    }
+    #solutionBanner .next{
+        right:-40px;
+    }
+}
+/*===============新闻=======================*/
+#news{
+    color:#333;
+}
+
+#news .newsContainer{
+    width:90%;
+    margin-left:5%;
+    margin-right:5%;
+    overflow: hidden;
+}
+#news .newsContainer .newsList{
+    /*width:100%;*/
+    padding:3%;
+    height:100%;
+}
+#news .newsContainer  .newsList .newsCard{
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    -webkit-box-shadow: 0 2px 15px #d6d6d6;
+    box-shadow: 0 2px 15px #d6d6d6;
+    padding: 20px 10px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+#news .newsContainer  .newsList .newsCard .newsCardImg{
+    float: left;
+    height:200px;
+    background-color: #00A1CB;
+}
+#news .newsContainer .newsList .newsCard .newsCardText{
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 20px;
+    float: right;
+}
+#news .newsContainer .newsList .newsCard .newsCardText h2{
+    font-size: 18px;
+    font-weight: bold;
+    padding: 20px 0;
+}
+#news .newsContainer .newsList .newsCard .newsCardText p{
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    padding-bottom:40px;
+}
+#news .newsContainer .newsList .newsCard .newsCardText a{
+    background: #6d80bc;
+    font-size: 14px;
+    color: #fff;
+    border: 1px solid #6d80bc;
+    border-radius: 20px;
+    padding: 4px 30px;
+}
+#news .newsContainer .newsP{
+    width:100%;
+    height:50px;
+    line-height:50px;
+    border-bottom: 1px solid #d6d6d6;
+}
+#news .newsContainer .newsP a{
+    color:#333;
+}
+#news .newsContainer .newsP .date{
+    float: right;
+}
+#news .newsContainer .newsList .imgMask{
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    width:620px;
+    height:411px;
+    background-color: #000;
+}
+#news .newsContainer .newsList .imgMask img{
+
+}
+#news .newsContainer .newsList .imgMask  p{
+    width: 100%;
+    line-height: 46px;
+    background: rgba(137, 137, 137, .48);
+    color: #fff;
+    font-size: 18px;
+    padding: 0 20px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin:0;
+}
+#news .moreBtn{
+    display: inline-block;
+    padding: 4px 20px;
+    font-size: 14px;
+    color: #fff;
+    background: #000;
+    margin: 30px 0;
+    border:1px solid #000;
+}
+#news .moreBtn:hover{
+    background: #fff;
+    color: #333;
+    border:1px solid #000;
+}
+/*================================案例=======================*/
+#case{
+    background-color: #000000;
+    padding-bottom:30px;
+}
+#caseBanner{
+    width:100%;
+}
+#caseBanner .swiper-container{
+    width:90%;
+    margin:0 auto;
+}
+#caseBanner .swiper-container .slide_text{
+    width: 100%;
+    padding: 30px 0 40px;
+    background: rgba(0, 0, 0, .55);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
+}
+#caseBanner .swiper-container .slide_text p{
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+#caseBanner .swiper-container .slide_text a{
+    padding: 5px 30px;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 18px;
+}
+#caseBanner .swiper-button-prev{
+     background-image:url(../img/left.png);
+ }
+#caseBanner .swiper-button-next{
+    background-image:url(../img/right.png);
+}

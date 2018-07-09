@@ -1,0 +1,107 @@
+{extend name="content"/}
+
+{block name="style"}
+<style type="text/css">
+    table tr td input {
+        text-align: center;
+        border: 1px solid #888888;
+        border-radius: 5px;
+    }
+    .td_center {
+        text-align: center;
+    }
+    .td_center a {
+        display: inline-block;
+        background-color: #EEEEEE;
+        box-shadow: 0px 0px 2px #888888;
+    }
+    .editbutton div a{
+        text-decoration: none;
+        color: #000;
+    }
+</style>
+{/block}
+
+{block name="con"}
+<div>
+    <a target="main" href="{:url('heart/Home/bannerAdd')}" class="easyui-linkbutton radius-3"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;&nbsp;添加轮播图</a>
+</div>
+<hr class="hr-height-2">
+<table>
+    <colgroup>
+        <col width="5%">
+        <col width="20%">
+        <col width="25%">
+        <col width="10%">
+        <col width="10%">
+        <col width="8%">
+        <col width="10%">
+    </colgroup>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>轮播缩略图</th>
+        <th>链接地址</th>
+        <th>轮播title</th>
+        <th>轮播alt</th>
+        <th>显示</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {volist name="bannerList.list" id="v"}
+    <tr>
+        <td class="td_center">{$v.id}</td>
+        <td class="td_center"><img src="{$v.thumb}" style="width: 256px;"></td>
+        <td class="td_center">{$v.href}</td>
+        <td class="td_center">{$v.title}</td>
+        <td class="td_center">{$v.alt}</td>
+        <td class="td_center">{$v.is_show == 1 ? '显示' : '隐藏'}</td>
+        <td class="td_center">
+            <a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#{$v.id}'"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp;编辑</a>
+            <div id="{$v.id}" class="editbutton" style="width:150px;">
+                <div><a target="main" href="{:url('heart/Home/bannerEdit',['id'=>$v['id']])}">修改轮播</a></div>
+                <div class="menu-sep"></div>
+                <div><a href="javascript:;" onclick="bannerDel({$v['id']})">删除轮播</a></div>
+            </div>
+        </td>
+    </tr>
+    {/volist}
+
+    <tr>
+        <td colspan="8">
+            <div class="page">
+                {$bannerList.page}
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+{/block}
+
+{block name="script"}
+<script type="text/javascript">
+    function bannerDel(id)
+    {
+        $.messager.confirm({
+            title: '提示：',
+            msg: '危险！你确定要删除吗？',
+            fn: function(r){
+                if (r){
+                    var url = "{:url('heart/Home/bannerDel')}";
+                    $.get(url,{id:id},function (res) {
+                        $.messager.alert({
+                            title: '提示',
+                            msg: res.msg,
+                            fn: function(){
+                                window.location.reload();
+                            }
+                        });
+                    });
+                }
+            }
+        });
+    }
+</script>
+{/block}
+

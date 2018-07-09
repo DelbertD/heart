@@ -1,0 +1,17 @@
+h3.titleP{
+    font-size: 18px;
+    color: #333;
+    line-height: 4;
+
+}
+a.more{
+    padding: 10px 40px;
+    font-size: 14px;
+    color: #666;
+    border: 1px solid #dcdcdc;
+}
+a.more:hover{
+    background-color: #6d80bc;
+    color:#fff;
+    border:1px solid #6d80bc;
+}

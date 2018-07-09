@@ -1,0 +1,112 @@
+{extend name="content"/}
+{block name="style"}
+{/block}
+{block name="con"}
+<div>
+    <div>
+        <form id="ff" action="{$url ?? ''}" method="post" onsubmit="return submitFun(this);">
+            <table cellpadding="5">
+                <colgroup>
+                    <col width="15%">
+                    <col width="85%">
+                </colgroup>
+                <tr>
+                    <td>公司全称:</td>
+                    <td><input type="text" name="name" class="len" value="{$comInfo.name}"></td>
+                </tr>
+                <tr>
+                    <td>成立日期:</td>
+                    <td>
+                        <input class="easyui-datebox required" data-options="formatter:myformatter,parser:myparser,currentText:'今天',closeText:'关闭'" name="time" value="{$comInfo.time}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>负责人:</td>
+                    <td>
+                        <input  type="text" name="owner" class="required" value="{$comInfo.owner}">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>联系电话（手机）:</td>
+                    <td><input  type="text" name="phone" class="tel" value="{$comInfo.phone}"></td>
+                </tr>
+                <tr>
+                    <td>座机:</td>
+                    <td><input  type="text" name="tel" class="required" value="{$comInfo.tel}"></td>
+                </tr>
+                <tr>
+                    <td>传真号:</td>
+                    <td><input  type="text" name="fax" class="required" value="{$comInfo.fax}"></td>
+                </tr>
+                <tr>
+                    <td>email:</td>
+                    <td><input  type="text" name="email" class="email" value="{$comInfo.email}"></td>
+                </tr>
+                <tr>
+                    <td>公司地址:</td>
+                    <td><input  type="text" name="addr" class="required" value="{$comInfo.addr}"></td>
+                </tr>
+                <tr>
+                    <td>网站LOGO:</td>
+                    <td>
+                        <input  type="text" name="logo" class="required" style="width: 50%;" value="{$comInfo.logo}" readonly placeholder="{:config('cue.thumb')}">
+                        <input type="file" name="file" style="display: none"/>
+                        <span id="up" style="margin: 0 20px;" class="choicon"><a href="javascript:void(0)" class="easyui-linkbutton"><i class="fa fa-upload" aria-hidden="true"></i></a></span>
+                        <img id="logo" src="{$comInfo.logo}" alt="预览" style="width: 75px;height: 40px;vertical-align: middle;"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="table_center">
+                        <input type="submit" class="easyui-linkbutton" value="保存">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+    $(function(){
+        $('#up').click(function(){
+            $("input[type='file']").click();
+        });
+
+        $("input[type='file']").change(function(){
+            var url = "{:url('heart/Base/upload')}";
+            var file = this.files[0];
+            var data = new FormData();
+            data.append('file',file);
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: data,
+                mimeType: 'multipart/form-data',
+                contentType: false,
+                processData: false,
+                success: function(res){
+                    //显示预览图
+                    var img = JSON.parse(res);
+                    var logo = $('#logo');
+                    logo.css('display','');
+                    logo.attr("src",img.url);
+                    //追加表单路径
+                    $("input[name='logo']").val(img.url);
+                },
+                error: function(res){
+                    var img = JSON.parse(res);
+                    $.messager.alert({
+                        title: '提示',
+                        msg: img.msg,
+                        fn: function(){
+                            window.location.reload();
+                        }
+                    });
+                }
+            });
+        });
+    });
+
+</script>
+{/block}

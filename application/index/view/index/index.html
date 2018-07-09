@@ -1,0 +1,172 @@
+{extend name="base"/}
+{block name="con"}
+<!--=======================banner=======================-->
+<section class="bitBanner" id="banner">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            {volist name="banner" id="v"}
+            <div class="swiper-slide">
+                <a href="{:url($v.href)}">
+                    <img src="{$v.thumb}" title="{$v.title}" alt="{$v.title}" style="width: 100%;height: 950px;" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                </a>
+            </div>
+            {/volist}
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
+<!--=================================================-->
+<section class="container overFlow" id="">
+    <div class="wow bounceInDown titleContain">
+        <h2 class="sectionTitle">服务项目</h2>
+        <p class="subTitle">SERVICE</p>
+    </div>
+    <div class="inlineBlock">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="wow bounceInUp col-2 col-xs-12">
+                    <div class="imgBox">
+                        <img src="" alt="" title="">
+                    </div>
+                    <div class="serviceInfo">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--====================================产品中心====================================-->
+<section id="case" class="overFlow">
+    <div class="wow bounceInDown titleContain">
+        <h2 class="sectionTitle soluteTitle">产品中心</h2>
+        <p class="subTitle">PRODUCT</p>
+    </div>
+    <div class="inlineBlock" id="caseBanner">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                {volist name="product" id="v"}
+                <div class="swiper-slide">
+                    <img src="{$v.thumb}" alt="{$v.alt}" title="{$v.title}" style="width: 100%;height: 700px;" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                    <div class="slide_text">
+                        <p>{$v.name}</p>
+                        <a href="#">了解更多</a>
+                    </div>
+                </div>
+                {/volist}
+            </div>
+            <!-- 如果需要导航按钮 -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+</section>
+<!--&lt;!&ndash;==================解决方案================&ndash;&gt;-->
+<section id="solution" class="overFlow">
+    <div class="wow bounceInDown titleContain">
+        <h2 class="sectionTitle soluteTitle">产品中心</h2>
+        <p class="subTitle">PRODUCT</p>
+    </div>
+    <div class="wow bounceInUp inlineBlock overFlow" id="solutionBanner">
+        <div class="wrap" id="wrap">
+            <div class="slide" id="slide">
+                <ul>
+
+                    <li><a href="#"><img src="images/slidepic1.png" alt=""/></a></li>
+                    <li><a href="#"><img src="images/slidepic2.png" alt=""/></a></li>
+                    <li><a href="#"><img src="images/slidepic3.png" alt=""/></a></li>
+                    <li><a href="#"><img src="images/slidepic4.png" alt=""/></a></li>
+                    <li><a href="#"><img src="images/slidepic5.png" alt=""/></a></li>
+                </ul>
+                <div class="arrow" id="arrow">
+                    <a href="javascript:;" class="prev" id="arrLeft"></a>
+                    <a href="javascript:;" class="next" id="arrRight"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--=======================新闻=======================-->
+<section id="news" class="overFlow">
+    <div class="wow bounceInDown titleContain">
+        <h2 class="sectionTitle">新闻中心</h2>
+        <p class="subTitle">NEWS</p>
+    </div>
+    <!--<div class="newsTab">-->
+        <!--<button class="wow bounceInRight animated active newsBtn" type="button">公司新闻</button>-->
+        <!--<button class="wow bounceInLeft animated newsBtn" type="button">行业动态</button>-->
+    <!--</div>-->
+    <div class="inlineBlock newsContainer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-5 wow bounceInLeft col-xs-12">
+                    <div class="newsList">
+                        <div class="newsCard">
+                            <div class="container-fluid">
+
+                                <div class="row">
+                                    <div class="col-5 col-xs-12">
+                                        <div class="newsCardImg">
+                                            <img src="{$fNew.thumb}" alt="{$fNew.alt}" title="{$fNew.title}">
+                                        </div>
+                                    </div>
+                                    <div class="col-5 col-xs-12">
+                                        <div class="newsCardText">
+                                            <h2>{$fNew.name|substr=0,99}...</h2>
+                                            <p>{$fNew.abs|substr=0,123}...</p>
+                                            <a class="btn" href="{:url('index/News/show',['id'=>$fNew['id']])}">查看</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        {volist name="listNews" id="v"}
+                        <p class="newsP"><a href="javascript:;">{$v.name}<span class="date">{$v.addtime|date='Y-m-d',###}</span></a></p>
+                        {/volist}
+                    </div>
+                </div>
+                <div class="col-5 wow bounceInRight col-xs-12">
+                    <div class="newsList">
+                        <div class="imgMask">
+                            <img src="{$bNew.thumb}" alt="{$bNew.alt}" title="{$bNew.title}">
+                            <p>{$bNew.name|substr=0,21}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="textCenter">
+                <a class="btn btn_more wow bounceInUp moreBtn" href="javascript:;" >MORE →</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--=============================产品服务====================-->
+<section class="container overFlow" id="service">
+    <div class="wow bounceInDown titleContain">
+        <h2 class="sectionTitle">客户评价</h2>
+        <p class="subTitle">我们前进的动力</p>
+    </div>
+    <div class="inlineBlock">
+        <div class="container-fluid">
+            <div class="row">
+                {volist name="say" id="v"}
+                <div class="wow bounceInUp col-2 col-xs-12">
+                    <div class="imgBox">
+                        <img src="{$v.thumb}" alt="{$v.alt}" title="{$v.title}">
+                    </div>
+                    <div class="serviceInfo">
+                        <h3>{$v.name}</h3>
+                        <p>{$v.content}</p>
+                    </div>
+                </div>
+                {/volist}
+            </div>
+        </div>
+    </div>
+</section>
+{/block}
+

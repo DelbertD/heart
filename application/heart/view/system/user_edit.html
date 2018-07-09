@@ -1,0 +1,41 @@
+{extend name="content"/}
+{block name="style"}
+{/block}
+{block name="con"}
+<div>
+    <div>
+        <form id="ff" action="{$url ?? ''}" method="post" onsubmit="return submitFun(this);">
+            <table cellpadding="5">
+                <colgroup>
+                    <col width="15%">
+                    <col width="85%">
+                </colgroup>
+                <tr>
+                    <td>账户名称:</td>
+                    <td><input type="text" name="name" class="len" value="{$user.name}" readonly></td>
+                </tr>
+                <tr>
+                    <td>新密码:</td>
+                    <td><input  type="password" name="pass" class="required"></td>
+                </tr>
+                <tr>
+                    <td>确认新密码:</td>
+                    <td><input  type="password" name="nopass" class="required"></td>
+                </tr>
+                <tr>
+                    <td>发布昵称:</td>
+                    <td><input type="text" name="nickname" class="len" value="{$user.nickname}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="table_center">
+                        <input type="submit" class="easyui-linkbutton" value="修改">
+                        <input type="button" class="easyui-linkbutton" value="返回" onclick="goBack();">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+{/block}
+{block name="script"}
+{/block}

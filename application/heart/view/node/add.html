@@ -1,79 +1,54 @@
 {extend name="content"/}
 {block name="style"}
-<style type="text/css">
-    table {
-        width: 600px;
-        font-size: 14px;
-        margin-bottom: 20px;
-        border-collapse: collapse;
-    }
-    table tr td,table tr th{
-        padding: 8px 10px;
-
-        border: 1px solid #E1E1E1;
-    }
-    table tr th {
-        color: #888888;
-        letter-spacing: 3px;
-    }
-    table tr td input[type="text"] {
-        width: 100%;
-        height: 30px;
-        border: 1px solid #D3D3D3;
-        border-radius: 4px;
-    }
-    table tr td select {
-        width: 100%;
-        height: 30px;
-        border: 1px solid #D3D3D3;
-        border-radius: 4px;
-    }
-    table tr td textarea {
-        width: 100%;
-        height: 50px;
-        border: 1px solid #D3D3D3;
-        border-radius: 4px;
-    }
-    .table_center {
-        text-align: center;
-    }
-</style>
 {/block}
 {block name="con"}
 <div>
     <div>
-        <form id="ff" method="post">
+        <form id="ff" action="{:url('heart/Node/add')}" method="post" onsubmit="return submitFun(this);">
             <table cellpadding="5">
                 <colgroup>
                     <col width="15%">
                     <col width="85%">
                 </colgroup>
                 <tr>
-                    <td>节点名称:</td>
-                    <td><input type="text" name="name" data-options="required:true"></input></td>
-                </tr>
-                <tr>
                     <td>菜单名称:</td>
-                    <td><input  type="text" name="title" data-options="required:true"></input></td>
+                    <td><input type="text" name="name" class="len"></td>
                 </tr>
                 <tr>
-                    <td>节点描述:</td>
-                    <td><textarea name="remark"></textarea></td>
+                    <td>代码名称:</td>
+                    <td><input  type="text" name="flag" class="required"></td>
                 </tr>
                 <tr>
-                    <td>节点级别:</td>
+                    <td>菜单图标:</td>
                     <td>
-                        <select id="level"  name="level">
-                            <option value=""></option>
+                        <input  type="text" name="icon" class="required" style="width: 80%;"/><span style="margin: 0 50px;" class="choicon"> <a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#ic').window('open')"><i class="fa fa-picture-o" aria-hidden="true"></i></a></span>
+                        <div id="ic" class="easyui-window" title="选择图标" data-options="closed:true" style="width:80%;height:400px;padding:10px;">
+                            {volist name="icons" id="v"}
+                            <div class="icon">
+                                <i class="fa {$v.name} fa-2x" aria-hidden="true" onclick="iconChose(this);"></i>
+                            </div>
+                            {/volist}
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>排序:</td>
+                    <td><input  type="text" name="sort" class="num"></td>
+                </tr>
+                <tr>
+                    <td>菜单级别:</td>
+                    <td>
+                        <select name="lev" id="" class="required">
+                            <option value="">请选择级别....</option>
                             <option value="1">模块级别</option>
                             <option value="2">操作级别</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
-                    <td>父节点:</td>
+                    <td>所属菜单:</td>
                     <td>
-                        <select id="pid" name="pid">
+                        <select name="pid" class="required">
 
                         </select>
                     </td>
@@ -87,8 +62,8 @@
                 </tr>
                 <tr>
                     <td colspan="2" class="table_center">
-                        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">添加</a>
-                        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="cancel()">取消</a>
+                        <input type="submit" class="easyui-linkbutton" value="添加">
+                        <input type="button" class="easyui-linkbutton" value="返回" onclick="goBack();">
                     </td>
                 </tr>
             </table>
@@ -97,20 +72,19 @@
 </div>
 {/block}
 {block name="script"}
-<script>
-    $(document).ready(function(){
-        $('#level').change(function(){
-            var level = $(this).children('option:selected').val();
-            var url = "{:url('heart/Node/getParent')}";
-            $.post(url,{level:level},function(res){
-                $('#pid').empty();
-                $('#pid').append(res);
-            });
+<script type="text/javascript">
+    $(function(){
+        $("select[name='lev']").change(function(){
+            var lev = this.value;
+            if(lev)
+            {
+                var url = "{:url('heart/Node/getParNode')}";
+                $.get(url,{lev:lev},function(res){
+                        $("select[name='pid']").empty();
+                        $("select[name='pid']").append(res.str);
+                })
+            }
         });
-
-    });
-    function submitForm(){
-        $('#ff').form('submit');
-    }
+    })
 </script>
 {/block}

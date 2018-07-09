@@ -1,0 +1,126 @@
+{extend name="content"/}
+
+{block name="style"}
+<style type="text/css">
+    table tr td input {
+        text-align: center;
+        border: 1px solid #888888;
+        border-radius: 5px;
+    }
+    .td_center {
+        text-align: center;
+    }
+    .td_center a {
+        display: inline-block;
+        background-color: #EEEEEE;
+        box-shadow: 0px 0px 2px #888888;
+    }
+    .editbutton div a{
+        text-decoration: none;
+        color: #000;
+    }
+</style>
+{/block}
+
+{block name="con"}
+<div>
+    <a target="main" href="{:url('heart/System/userAdd')}" class="easyui-linkbutton radius-3"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;&nbsp;添加账户</a>
+</div>
+<hr class="hr-height-2">
+<table>
+    <colgroup>
+        <col width="5%">
+        <col width="10%">
+        <col width="10%">
+        <col width="20%">
+        <col width="20%">
+        <col width="10%">
+        <col width="8%">
+        <col width="10%">
+    </colgroup>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>账户名</th>
+        <th>发布昵称</th>
+        <th>最后登陆时间</th>
+        <th>最后登录IP</th>
+        <th>新闻篇数</th>
+        <th>问答篇数</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {volist name="user" id="v"}
+    <tr>
+        <td class="td_center">{$v.id}</td>
+        <td class="td_center">{$v.name}</td>
+        <td class="td_center">{$v.nickname}</td>
+        <td class="td_center">{$v.log_time|date='Y-m-d H:i:s',###}</td>
+        <td class="td_center">{$v.log_ip}</td>
+        <td class="td_center">{$v.n_num}</td>
+        <td class="td_center">{$v.a_num}</td>
+        <td class="td_center">
+            <a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#{$v.id}'"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp;编辑</a>
+            <div id="{$v.id}" class="editbutton" style="width:150px;">
+                <div><a href="javascript:;" onclick="prompt1({$v['id']},'{$v.name}')">修改账户</a></div>
+                <div class="menu-sep"></div>
+                <div><a href="javascript:;" onclick="userDel({$v['id']})">删除账户</a></div>
+            </div>
+        </td>
+    </tr>
+    {/volist}
+    </tbody>
+</table>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+    function userDel(id)
+    {
+        $.messager.confirm({
+            title: '提示：',
+            msg: '危险！你确定要删除吗？',
+            fn: function(r){
+                if (r){
+                    $.messager.prompt('确认密码：', '用户&nbsp;&nbsp;'+name+'&nbsp;&nbsp;的原始密码：', function(pass){
+                        if(pass == ''){
+                            $.messager.alert('提示：','原始密码不能为空！');
+                        }
+                        if(pass){
+                            var url = "{:url('heart/System/userDel')}";
+                            $.get(url,{id:id},function (res) {
+                                $.messager.alert({
+                                    title: '提示',
+                                    msg: res.msg,
+                                    fn: function(){
+                                        window.location.reload();
+                                    }
+                                });
+                            });
+                        }
+                    });
+                }
+            }
+        });
+    }
+
+    function prompt1(id , name){
+        $.messager.prompt('确认密码：', '用户&nbsp;&nbsp;'+name+'&nbsp;&nbsp;的原始密码：', function(pass){
+            if(pass == ''){
+                $.messager.alert('提示：','原始密码不能为空！');
+            }
+            if(pass){
+                var url = "{:url('heart/System/checkPass')}";
+                $.post(url,{id:id,pass:pass},function(res){
+                    if(res.code == 0){
+                        $.messager.alert('提示：',res.msg);
+                    }else{
+                        location.href=res.url+'?id='+res.data.id;
+                    }
+                });
+            }
+        });
+    }
+</script>
+{/block}
+

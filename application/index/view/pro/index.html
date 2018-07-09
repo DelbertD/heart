@@ -1,0 +1,46 @@
+{extend name="base"/}
+{block name="style"}
+<link rel="stylesheet" href="/static/css/index/prolist.css">
+{/block}
+{block name="con"}
+<!--=======================banner=======================-->
+<section style="background-color: #00aff0;height:300px">
+
+</section>
+<!--=============================产品列表====================-->
+<section class="inlineBlock overFlow paddingBottom50">
+    <div class="container overFlow">
+        <div class="newsTab overFlow">
+            {volist name="cateInfo" id="v"}
+            {eq name="key" value="0"}
+            <a href="{:url('index/Pro/index',['cid'=>$v['id']])}" {if condition="$v['id']==$cid"}class="wow bounceInRight animated active newsBtn"{else/}class="wow bounceInRight animated newsBtn"{/if} type="button">{$v.name}</a>
+            {else/}
+            <a href="{:url('index/Pro/index',['cid'=>$v['id']])}" {if condition="$v['id']==$cid"}class="wow bounceInRight animated active newsBtn"{else/}class="wow bounceInRight animated newsBtn"{/if} type="button">{$v.name}</a>
+            {/eq}
+            {/volist}
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                {volist name="pro.list" id="v"}
+                <div class="col-5 col-xs-12 paddingBottom30 wow bounceInRight">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-5 col-xs-12">
+                                <img src="{$v.thumb}" alt="{$v.alt}" title="{$v.title}">
+                            </div>
+                            <div class="col-5 col-xs-12">
+                                <div class="paddingBottom30 container">
+                                    <h3 class="titleP">{$v.name}</h3>
+                                    <a href="javascript:;" class="more">查看更多</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {/volist}
+            </div>
+        </div>
+    </div>
+</section>
+{/block}
+

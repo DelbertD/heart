@@ -28,6 +28,7 @@ abstract class Driver
      */
     abstract public function has($name);
 
+
     /**
      * 读取缓存
      * @access public

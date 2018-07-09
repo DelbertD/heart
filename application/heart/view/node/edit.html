@@ -1,0 +1,111 @@
+{extend name="content"/}
+{block name="style"}
+{/block}
+{block name="con"}
+<div>
+    <div>
+        <form id="ff" action="{$url}" method="post" onsubmit="return submitFun(this);">
+            <table cellpadding="5">
+                <colgroup>
+                    <col width="15%">
+                    <col width="85%">
+                </colgroup>
+                <tr>
+                    <td>菜单名称:</td>
+                    <td><input type="text" name="name" class="len" value="{$node.name}"></td>
+                </tr>
+                <tr>
+                    <td>代码名称:</td>
+                    <td><input  type="text" name="flag" class="required" value="{$node.flag}"></td>
+                </tr>
+                <tr>
+                    <td>菜单图标:</td>
+                    <td>
+                        <input  type="text" name="icon" class="required" style="width: 80%;" value="{$node.icon}"/><span class="choicon" style="margin: 0 50px;"> <a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#ic').window('open')"><i class="fa fa-picture-o" aria-hidden="true"></i></a></span>
+                        <div id="ic" class="easyui-window" title="选择图标" data-options="closed:true" style="width:80%;height:400px;padding:10px;">
+                            {volist name="icons" id="v"}
+                            <div class="icon">
+                                <i class="fa {$v.name} fa-2x" aria-hidden="true" onclick="iconChose(this);"></i>
+                            </div>
+                            {/volist}
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>排序:</td>
+                    <td><input  type="text" name="sort" class="num" value="{$node.sort}"></td>
+                </tr>
+                <tr>
+                    <td>菜单级别:</td>
+                    <td>
+                        <select name="lev" class="required">
+                            {eq name="node.lev" value="0"}
+                            <option value="0" selected>项目级别</option>
+                            <option value="1">模型级别</option>
+                            <option value="2">操作级别</option>
+                            {/eq}
+                            {eq name="node.lev" value="1"}
+                            <option value="0">项目级别</option>
+                            <option value="1" selected>模型级别</option>
+                            <option value="2">操作级别</option>
+                            {/eq}
+                            {eq name="node.lev" value="2"}
+                            <option value="0">项目级别</option>
+                            <option value="1">模型级别</option>
+                            <option value="2" selected>操作级别</option>
+                            {/eq}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>所属菜单:</td>
+                    <td>
+                        <select name="pid" class="required">
+                            {volist name="nodeTree" id="v"}
+                            <option value="{$v.id}" {if condition="$node['pid']==$v['id']"} selected {/if} >{$v.__name}</option>
+                            {/volist}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>是否显示:</td>
+                    <td>
+                        {eq name="node.is_show" value="1"}
+                        <input type="radio" name="is_show" value="1" checked>显示
+                        <input type="radio" name="is_show" value="0">隐藏
+                        {else/}
+                        <input type="radio" name="is_show" value="1">显示
+                        <input type="radio" name="is_show" value="0" checked>隐藏
+                        {/eq}
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="table_center">
+                        <input type="submit" class="easyui-linkbutton" value="修改">
+                        <input type="button" class="easyui-linkbutton" value="返回" onclick="goBack();">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+    $(function(){
+        $("select[name='lev']").change(function(){
+            var lev = this.value;
+            if(lev)
+            {
+                var url = "{:url('heart/Node/getParNode')}";
+                $.get(url,{lev:lev},function(res){
+                    $("select[name='pid']").empty();
+                    $("select[name='pid']").append(res.str);
+                });
+            }
+
+        });
+    })
+
+</script>
+{/block}

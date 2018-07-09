@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{$title}</title>
+    <link rel="icon" href="/static/admin/imgs/icon.ico" type="image/x-icon">
+    <meta name="keywords" content="{$keywords}" />
+    <meta name="description" content="{$desc}" />
+    {include file='extra@index/inc'}
+    {block name="style"}
+    <!--css样式-->
+    {/block}
+    <script>new WOW().init();</script>
+</head>
+<body>
+<!--=====================顶部导航====================-->
+<header id="header">
+    <div class="navContainer mobileHeader">
+        <div id="logo" class="mobileLogo">
+            <a href="javascript:;">
+                <h1>
+                    <img src="img/logo1.png" alt="">
+                </h1>
+            </a>
+        </div>
+        <i class="glyphicon glyphicon-list mobileBtn" style="color:#fff"></i>
+        <div id="navBar" class="mobileNav">
+            <ul>
+                {volist name="nav" id="v"}
+                <li><a href="{:url($v.url)}" title="{$v.tips}" class="link"><h2>{$v.name}</h2></a></li>
+                {/volist}
+            </ul>
+        </div>
+        <div class="hideNav">
+
+        </div>
+    </div>
+</header>
+{block name="con"}
+<!--主体内容区域-->
+{/block}
+<!--==================================footer============================================-->
+<footer>
+    <div class="footerContainer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4 col-xs-12 wow bounceInUp">
+                    <p class="footerTitle">底部标题</p>
+                    <p>内容</p>
+                </div>
+                <div class="col-4 col-xs-12 wow bounceInUp">
+                    <p class="footerTitle">底部标题</p>
+                    <p>内容</p>
+                </div>
+                <div class="col-4 col-xs-12 wow bounceInUp">
+                    <p class="footerTitle">底部标题</p>
+                    <p>内容</p>
+                </div>
+                <div class="col-4 col-xs-12 wow bounceInUp">
+                    <p class="footerTitle">底部标题</p>
+                    <p>内容</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyRight wow bounceInUp">CopyRight© 2018新光科技有限公司All Rights Reserved</div>
+</footer>
+<script>
+    var mySwiper = new Swiper ('#banner .swiper-container', {
+        loop: true,
+        autoplay: {
+            delay: 2000,//1秒切换一次
+        },
+        autoplayDisableOnInteraction : false,
+        // 如果需要分页器
+        pagination: {
+            el: '.swiper-pagination',
+            clickable:true
+        }
+    });
+    //
+    var caseSwiper = new Swiper ('#caseBanner .swiper-container', {
+        loop: true,
+        autoplay: {
+            delay: 2000,//1秒切换一次
+        },
+        autoplayDisableOnInteraction : false,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+        }
+    });
+</script>
+</body>
+</html>

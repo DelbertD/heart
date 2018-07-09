@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>西安一心一意官网后台管理</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/heart/login.css" />
+</head>
+<body>
+<div class="loginContainer">
+    <div class="rope"></div>
+    <div class="formContainer">
+        <div class="formTitle">
+            一心一意后台管理
+        </div>
+        <div class="inputContainer">
+            <form action="{$url ?? ''}" method="post">
+                <input type="text" class="input user" placeholder="请输入用户名" required="required" name="name">
+                <input type="password" class="input pass" placeholder="请输入用户密码" required="required" name="pass">
+                <input type="submit" value="登录" class="submit">
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

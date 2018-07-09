@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Basic Layout - jQuery EasyUI Demo</title>
+    <title>西安一心一意官网后台管理</title>
     {include file='extra@heart/inc'}
     <style>
         .logo {
@@ -15,43 +15,91 @@
             display: inline-block;
             margin-left: 50px;
         }
+        .nav {
+            margin: 0;
+            padding: 0;
+        }
+        .nav li {
+            list-style: none;
+            padding: 10px 0;
+            padding-left: 20px;
+        }
+        .nav li:hover {
+            background-color: #E5FBF2;
+        }
+        .nav li a {
+            display: block;
+            width: 100%;
+            text-decoration: none;
+            color: #000;
+        }
+        .active {
+            background-color: #C8D47B;
+        }
+
     </style>
 </head>
 <body class="easyui-layout">
-<div data-options="region:'north',border:false" style="height:60px;padding:10px">
+<div id="header" data-options="region:'north',border:false" style="height:60px;padding:10px;margin: 2px 0">
     <!--头-->
     <div class="logo">
-        <img src="" alt="LOGO" title="LOGO">
+        <h2 style="display: inline;line-height: 39px;color:#FFFFCC;letter-spacing: 2px">您好，亲爱的{:session('user')}</h2>
     </div>
     <div class="user">
         <div style="padding:5px;text-align: right">
-            <a target="main" href="{:url('heart/Node/lists')}" class="easyui-linkbutton" plain="true" iconCls="icon-add">节点管理</a>
-            <a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-cancel">退出</a>
+            <a href="javascript:;" title="登出" class="easyui-linkbutton" style="color: #1E3034" plain="true" onclick="logout();"><i class='fa fa-sign-out' aria-hidden='true'></i>&nbsp;&nbsp;退出</a>
         </div>
     </div>
 </div>
 <div data-options="region:'west',split:true,title:'管理菜单'" style="width:250px;padding: 10px;">
    <!--左侧-->
-    <div class="easyui-accordion" style="width:100%;">
-        <div title="About" data-options="iconCls:'icon-ok'" style="overflow:auto;padding:10px;">
-            <h3 style="color:#0099FF;">Accordion for jQuery</h3>
-            <p>Accordion is a part of easyui framework for jQuery. It lets you define your accordion component on web page more easily.</p>
-        </div>
-        <div title="Help" data-options="iconCls:'icon-help'" style="padding:10px;">
-            <p>The accordion allows you to provide multiple panels and display one or more at a time. Each panel has built-in support for expanding and collapsing. Clicking on a panel header to expand or collapse that panel body. The panel content can be loaded via ajax by specifying a 'href' property. Users can define a panel to be selected. If it is not specified, then the first panel is taken by default.</p>
-        </div>
-        <div title="TreeMenu" data-options="iconCls:'icon-search'" style="padding:10px;">
-            <ul class="easyui-tree">
-                <li>
-                    <span>Foods</span>
-                </li>
+    <div class="easyui-accordion" style="width:100%;padding-left: 0">
+        {foreach $leftmenu as $vo}
+        <div title="<i class='fa {$vo.icon}' aria-hidden='true'></i>&nbsp;&nbsp;&nbsp;{$vo.name}" style="overflow:auto;">
+            <ul class="nav">
+                {if isset($vo['_child'])}
+                {foreach $vo['_child'] as $v}
+                <li><a target="main" href="{:url('heart/'.$vo['flag'].'/'.$v['flag'])}"><i class='fa {$v.icon}' aria-hidden='true'></i>&nbsp;&nbsp;{$v.name}</a></li>
+                {/foreach}
+                {/if}
             </ul>
         </div>
+        {/foreach}
     </div>
 </div>
-<div data-options="region:'center',iconCls:'icon-cancel',title:'展示页'" style="overflow:scroll;overflow-y:hidden;overflow-x:hidden">
+<div id="contitle" data-options="region:'center'" title="<i class='fa fa-bars' aria-hidden='true'></i>" style="overflow:scroll;overflow-y:hidden;overflow-x:hidden">
     <iframe name="main" src="{:url('heart/Index/sys')}" width="100%" height="100%" frameborder="0"></iframe>
 </div>
-<div data-options="region:'south',border:false" style="height:50px;padding:10px;">.....</div>
+<div data-options="region:'south',border:false" style="height:50px;padding:10px;text-align: center">
+    <p>开发团队：<span>西安一笔一画PHP开发小组</span></p>
+</div>
+<script type="text/javascript">
+        $('.nav li').click(function(){
+            $('.nav li').removeClass("active");
+            $(this).addClass("active");
+        });
+
+        function logout()
+        {
+            $.messager.confirm({
+                title: '提示：',
+                msg: '你确定要退出吗？',
+                fn: function(r){
+                    if (r){
+                        var url = "{:url('heart/Login/logout')}";
+                        $.get(url,{},function (res) {
+                            $.messager.alert({
+                                title: '提示',
+                                msg: res.msg,
+                                fn: function(){
+                                    window.location.reload();
+                                }
+                            });
+                        });
+                    }
+                }
+            });
+        }
+</script>
 </body>
 </html>

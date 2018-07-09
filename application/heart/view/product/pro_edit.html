@@ -1,0 +1,148 @@
+{extend name="content"/}
+{block name="style"}
+{/block}
+{block name="con"}
+<div>
+    <div>
+        <form id="ff" action="{$url ?? ''}" method="post" onsubmit="return submitFun(this);">
+            <table cellpadding="5">
+                <colgroup>
+                    <col width="15%">
+                    <col width="85%">
+                </colgroup>
+                <tr>
+                    <td>产品名称:</td>
+                    <td><input type="text" name="name" value="{$proInfo.name}" class="len"></td>
+                </tr>
+                <tr>
+                    <td>产品简介:</td>
+                    <td>
+                        <input type="text" name="abs" value="{$proInfo.abs}" class="len">
+                    </td>
+                </tr>
+                <tr>
+                    <td>上市时间:</td>
+                    <td>
+                        <input name="ctime" value="{$proInfo.ctime|date='Y-m-d',###}" class="easyui-datebox required" data-options="formatter:myformatter,parser:myparser,currentText:'今天',closeText:'关闭'">
+                    </td>
+                </tr>
+                <tr>
+                    <td>所属分类:</td>
+                    <td>
+                        <select name="cid" class="required">
+                            {foreach $cate as $v}
+                            <option value="{$v.id}" {if condition="$v['id']==$proInfo['cid']"}selected{/if}>{$v.name}</option>
+                            {/foreach}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>是否显示:</td>
+                    <td>
+                        {eq name="proInfo.is_show" value="1"}
+                        <input type="radio" name="is_show" value="1" checked>显示
+                        <input type="radio" name="is_show" value="0">隐藏
+                        {else/}
+                        <input type="radio" name="is_show" value="1">显示
+                        <input type="radio" name="is_show" value="0" checked>隐藏
+                        {/eq}
+                    </td>
+                </tr>
+                <tr>
+                    <td>产品详情:</td>
+                    <td>
+                        <textarea name="content" id="container" class="required" style="width: 90%">{$proInfo.content}</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>缩略图:</td>
+                    <td>
+                        <input  type="text" name="thumb" class="required" value="{$proInfo.thumb}" style="width: 50%;" readonly placeholder="{:config('cue.thumb')}">
+                        <input type="file" name="file" style="display: none"/>
+                        <span id="up" style="margin: 0 20px;" class="choicon"><a href="javascript:void(0)" class="easyui-linkbutton"><i class="fa fa-upload" aria-hidden="true"></i></a></span>
+                        <img id="thumb" src="{$proInfo.thumb}" alt="预览" style="width: 128px;height: 75px;vertical-align: middle;"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>缩略图title:</td>
+                    <td><input type="text" name="title" value="{$proInfo.title}" class="len" placeholder="{:config('cue.title')}"></td>
+                </tr>
+                <tr>
+                    <td>缩略图alt:</td>
+                    <td><input type="text" name="alt" value="{$proInfo.alt}" class="len" placeholder="{:config('cue.alt')}"></td>
+                </tr>
+                <tr>
+                    <td>排序:</td>
+                    <td>
+                        <input type="text" name="sort" class="num" value="{$proInfo.sort}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>详情页(HTML)title:</td>
+                    <td><input type="text" name="tip" value="{$proInfo.tip}" class="len" placeholder="{:config('cue.tip')}"></td>
+                </tr>
+                <tr>
+                    <td>详情页(HTML)desc:</td>
+                    <td><input type="text" name="desc" value="{$proInfo.desc}" class="len" placeholder="{:config('cue.desc')}"></td>
+                </tr>
+                <tr>
+                    <td>详情页(HTML)keywords:</td>
+                    <td><input type="text" name="keywords" value="{$proInfo.keywords}" class="len" placeholder="{:config('cue.keywords')}"></td>
+                </tr>
+                </tr>
+
+                <tr>
+                    <td colspan="2" class="table_center">
+                        <input type="submit" class="easyui-linkbutton" value="修改产品">
+                        <input type="button" class="easyui-linkbutton" value="返回" onclick="goBack();">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script type="text/javascript">
+    var ue = UE.getEditor('container');
+    $(function(){
+        $('#up').click(function(){
+            $("input[type='file']").click();
+        });
+
+        $("input[type='file']").change(function(){
+            var url = "{:url('heart/Base/upload')}";
+            var file = this.files[0];
+            var data = new FormData();
+            data.append('file',file);
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: data,
+                mimeType: 'multipart/form-data',
+                contentType: false,
+                processData: false,
+                success: function(res){
+                    //显示预览图
+                    var img = JSON.parse(res);
+                    var logo = $('#thumb');
+                    logo.css('display','');
+                    logo.attr("src",img.url);
+                    //追加表单路径
+                    $("input[name='thumb']").val(img.url);
+                },
+                error: function(res){
+                    var img = JSON.parse(res);
+                    $.messager.alert({
+                        title: '提示',
+                        msg: img.msg,
+                        fn: function(){
+                            window.location.reload();
+                        }
+                    });
+                }
+            });
+        });
+    });
+</script>
+{/block}

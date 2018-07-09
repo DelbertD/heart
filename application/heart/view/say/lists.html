@@ -1,0 +1,121 @@
+{extend name="content"/}
+
+{block name="style"}
+<style type="text/css">
+    table tr td input {
+        text-align: center;
+        border: 1px solid #888888;
+        border-radius: 5px;
+    }
+    .td_center {
+        text-align: center;
+    }
+    .td_center a {
+        display: inline-block;
+        background-color: #EEEEEE;
+        box-shadow: 0px 0px 2px #888888;
+    }
+    .editbutton div a{
+        text-decoration: none;
+        color: #000;
+    }
+</style>
+{/block}
+
+{block name="con"}
+<div>
+    <a target="main" href="{:url('heart/Say/add')}" class="easyui-linkbutton radius-3"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;添加客户评价</a>
+</div>
+<hr class="hr-height-2">
+<table>
+    <colgroup>
+        <col width="3%">
+        <col width="3%">
+        <col width="10%">
+        <col width="35%">
+        <col width="10%">
+        <col width="3%">
+        <col width="5%">
+    </colgroup>
+    <thead>
+    <tr>
+        <th>排序</th>
+        <th>ID</th>
+        <th>客户姓名</th>
+        <th>评价内容</th>
+        <th>发布人</th>
+        <th>显示</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {volist name="sayInfo.list" id="v"}
+    <tr>
+        <td class="td_center"><input type="text" value="{$v.sort}" style="width: 100%" onblur="sort({$v['id']},this)"></td>
+        <td class="td_center">{$v.id}</td>
+        <td class="td_center">{$v.name}</td>
+        <td class="td_center">{$v.content}</td>
+        <td class="td_center">{:get_value('nickname','admin','id',$v.uid)}</td>
+        <td class="td_center">{$v.is_show}</td>
+        <td class="td_center">
+            <a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#{$v.id}'"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp;编辑</a>
+            <div id="{$v.id}" class="editbutton" style="width:150px;">
+                <div><a target="main" href="{:url('heart/Say/edit',['id'=>$v['id']])}">修改客户评价</a></div>
+                <div class="menu-sep"></div>
+                <div><a href="javascript:;" onclick="del({$v['id']})">删除评价</a></div>
+            </div>
+        </td>
+    </tr>
+    {/volist}
+    <tr>
+        <td colspan="7">
+            <div class="page">
+                {$sayInfo.page}
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+{/block}
+
+{block name="script"}
+<script type="text/javascript">
+    function del(id)
+    {
+        $.messager.confirm({
+            title: '提示：',
+            msg: '危险！你确定要删除？',
+            fn: function(r){
+                if (r){
+                    var url = "{:url('heart/Say/del')}";
+                    $.get(url,{id:id},function (res) {
+                        $.messager.alert({
+                            title: '提示',
+                            msg: res.msg,
+                            fn: function(){
+                                window.location.reload();
+                            }
+                        });
+                    });
+                }
+            }
+        });
+    }
+
+    function sort(id,obj)
+    {
+        var sort = obj.value;
+        var url = "{:url('heart/Say/sort')}";
+        $.get(url,{id:id,sort:sort},function(res){
+            $.messager.alert({
+                title: '提示',
+                msg: res.msg,
+                fn: function(){
+                    window.location.reload();
+                }
+            });
+        })
+    }
+</script>
+{/block}
+

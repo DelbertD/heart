@@ -1,0 +1,49 @@
+{extend name="base"/}
+{block name="style"}
+<link rel="stylesheet" href="/static/css/index/newslist.css">
+{/block}
+{block name="con"}
+<!--=======================banner=======================-->
+<section style="background-color: #00aff0;height:300px">
+
+</section>
+<!--=============================新闻列表====================-->
+<section class="inlineBlock overFlow borderBottom">
+    <div class="newsTab overFlow">
+        {volist name="cateInfo" id="v"}
+        {eq name="key" value="0"}
+        <a href="{:url('index/News/index',['cid'=>$v['id']])}" {if condition="$v['id']==$cid"}class="wow bounceInRight animated active newsBtn"{else/}class="wow bounceInRight animated newsBtn"{/if} type="button">{$v.name}</a>
+        {else/}
+        <a href="{:url('index/News/index',['cid'=>$v['id']])}" {if condition="$v['id']==$cid"}class="wow bounceInRight animated active newsBtn"{else/}class="wow bounceInRight animated newsBtn"{/if} type="button">{$v.name}</a>
+        {/eq}
+        {/volist}
+    </div>
+    <div class="container">
+        {volist name="news.list" id="v"}
+        <div class="newsItem wow bounceInUp">
+            <a href="javascript:;">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-2 col-xs-12">
+                            <img src="{$v.thumb}" alt="{$v.alt}" title="{$v.title}">
+                        </div>
+                        <div class="col-60 col-xs-12">
+                            <h3>{$v.name}</h3>
+                            <p>{$v.abs}</p>
+                        </div>
+                        <div class="col-2 col-xs-12">
+                            <h2><div class="date">{$v.addtime|date='Y-m-d',###}</div></h2>
+                            <p class="right"><i class="left glyphicon glyphicon-chevron-right"></i></p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {/volist}
+        <div class="page">
+            {$news.page}
+        </div>
+    </div>
+</section>
+{/block}
+

@@ -1,0 +1,111 @@
+{extend name="content"/}
+
+{block name="style"}
+<style type="text/css">
+    table tr td input {
+        text-align: center;
+        border: 1px solid #888888;
+        border-radius: 5px;
+    }
+    .td_center {
+        text-align: center;
+    }
+    .td_center a {
+        display: inline-block;
+        background-color: #EEEEEE;
+        box-shadow: 0px 0px 2px #888888;
+    }
+    .editbutton div a{
+        text-decoration: none;
+        color: #000;
+    }
+</style>
+{/block}
+
+{block name="con"}
+<div>
+    <a target="main" href="{:url('heart/Product/cateAdd')}" class="easyui-linkbutton radius-3"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;添加分类</a>
+</div>
+<hr class="hr-height-2">
+<table>
+    <colgroup>
+        <col width="5%">
+        <col width="5%">
+        <col width="10%">
+        <col width="25%">
+        <col width="10%">
+        <col width="10%">
+    </colgroup>
+    <thead>
+    <tr>
+        <th>排序</th>
+        <th>ID</th>
+        <th>缩略图</th>
+        <th>分类名称</th>
+        <th>是否显示</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {volist name="cate" id="v"}
+    <tr>
+        <td class="td_center"><input type="text" value="{$v.sort}" style="width: 100%" onblur="cateSort({$v['id']},this)"></td>
+        <td class="td_center">{$v.id}</td>
+        <td class="td_center"><img src="{$v.thumb}" style="width: 64px;"></td>
+        <td class="td_center">{$v.name}</td>
+        <td class="td_center">{$v.is_show==1 ? '是' : '否'}</td>
+        <td class="td_center">
+            <a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#{$v.id}'"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp;编辑</a>
+            <div id="{$v.id}" class="editbutton" style="width:150px;">
+                <div><a target="main" href="{:url('heart/Product/cateEdit',['id'=>$v['id']])}">修改</a></div>
+                <div class="menu-sep"></div>
+                <div><a href="javascript:;" onclick="cateDel({$v['id']})">删除</a></div>
+            </div>
+        </td>
+    </tr>
+    {/volist}
+    </tbody>
+</table>
+{/block}
+
+{block name="script"}
+<script type="text/javascript">
+    function cateDel(id)
+    {
+        $.messager.confirm({
+            title: '提示：',
+            msg: '危险！分类下的产品也会被删除，你确定？',
+            fn: function(r){
+                if (r){
+                    var url = "{:url('heart/Product/cateDel')}";
+                    $.get(url,{id:id},function (res) {
+                        $.messager.alert({
+                            title: '提示',
+                            msg: res.msg,
+                            fn: function(){
+                                window.location.reload();
+                            }
+                        });
+                    });
+                }
+            }
+        });
+    }
+
+    function cateSort(id,obj)
+    {
+        var sort = obj.value;
+        var url = "{:url('heart/Product/cateSort')}";
+        $.get(url,{id:id,sort:sort},function(res){
+            $.messager.alert({
+                title: '提示',
+                msg: res.msg,
+                fn: function(){
+                    window.location.reload();
+                }
+            });
+        })
+    }
+</script>
+{/block}
+
