@@ -1,172 +1,391 @@
 {extend name="base"/}
 {block name="con"}
-<!--=======================banner=======================-->
-<section class="bitBanner" id="banner">
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            {volist name="banner" id="v"}
-            <div class="swiper-slide">
-                <a href="{:url($v.href)}">
-                    <img src="{$v.thumb}" title="{$v.title}" alt="{$v.title}" style="width: 100%;height: 950px;" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
-                </a>
+<!--轮播图-->
+<div id="banner">
+    <main id="bannerMain">
+        <div id="slider">
+            <div class="slider-inner">
+                <div id="pagination">
+                    {volist name="banner" id="v"}
+                    <button data-slide="{$key}" class="button"></button>
+                    {/volist}
+                </div>
             </div>
+            {volist name="banner" id="v"}
+            <a href="{:url($v.href)}"><img src="{$v.thumb}" title="{$v.title}" alt="{$v.alt}" class="bannerImg"/></a>
             {/volist}
         </div>
-        <div class="swiper-pagination"></div>
-    </div>
-</section>
-<!--=================================================-->
-<section class="container overFlow" id="">
-    <div class="wow bounceInDown titleContain">
-        <h2 class="sectionTitle">服务项目</h2>
-        <p class="subTitle">SERVICE</p>
-    </div>
-    <div class="inlineBlock">
-        <div class="container-fluid">
-            <div class="row">
-
-                <div class="wow bounceInUp col-2 col-xs-12">
-                    <div class="imgBox">
-                        <img src="" alt="" title="">
-                    </div>
-                    <div class="serviceInfo">
-                        <h3></h3>
-                        <p></p>
-                    </div>
+    </main>
+</div>
+<!--服务项目-->
+<div id="service">
+    <div class="container">
+        <!--<h2 class="text-center padding">服务项目</h2>-->
+        <div class="row marginTop">
+            <div class="item col-md-3 col-sm-6 col-xs-12 text-center">
+                <div class="icon animated fadeInUp delayp1">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 </div>
-
+                <div class="content">
+                    <h3 class="title">App Feature One</h3>
+                    <p>Outline an app feature/benefit here. You can change the icon above to any of the 500+FontAwesome icons available. </p>
+                </div>
+            </div>
+            <div class="item col-md-3 col-sm-6 col-xs-12 text-center">
+                <div class="icon animated fadeInUp delayp1">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </div>
+                <div class="content">
+                    <h3 class="title">App Feature One</h3>
+                    <p>Outline an app feature/benefit here. You can change the icon above to any of the 500+FontAwesome icons available. </p>
+                </div>
+            </div>
+            <div class="item col-md-3 col-sm-6 col-xs-12 text-center">
+                <div class="icon animated fadeInUp delayp1">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </div>
+                <div class="content">
+                    <h3 class="title">App Feature One</h3>
+                    <p>Outline an app feature/benefit here. You can change the icon above to any of the 500+FontAwesome icons available. </p>
+                </div>
+            </div>
+            <div class="item col-md-3 col-sm-6 col-xs-12 text-center">
+                <div class="icon animated fadeInUp delayp1">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </div>
+                <div class="content">
+                    <h3 class="title">App Feature One</h3>
+                    <p>Outline an app feature/benefit here. You can change the icon above to any of the 500+FontAwesome icons available. </p>
+                </div>
             </div>
         </div>
+
     </div>
-</section>
-<!--====================================产品中心====================================-->
-<section id="case" class="overFlow">
-    <div class="wow bounceInDown titleContain">
-        <h2 class="sectionTitle soluteTitle">产品中心</h2>
-        <p class="subTitle">PRODUCT</p>
-    </div>
-    <div class="inlineBlock" id="caseBanner">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                {volist name="product" id="v"}
-                <div class="swiper-slide">
-                    <img src="{$v.thumb}" alt="{$v.alt}" title="{$v.title}" style="width: 100%;height: 700px;" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
-                    <div class="slide_text">
-                        <p>{$v.name}</p>
-                        <a href="#">了解更多</a>
+</div>
+<!--============================色带===================================-->
+<div class="segmentation marginTop" style="background: url('/static/img/index/pattern-1.png') #56BC94;padding: 80px 50px;">
+    <p>三棵树的企业经营哲学来源于老子《道德经》的“道生一、一生二、二生三、三生万物”，“人法地，地法天，天法道，道法自然。”“无为而治”“敬天爱人”等;同时，企业图腾“树”代表健康、绿色、生命力，“三棵树”名字由此而来。</p>
+    <p>为了进一步弘扬“道法自然”的企业文化精神，丰富公司的文化载体，树立企业形象，三棵树涂料股份有限公司进行了文化升级，并以50万公开有奖征集司歌的形式，传递企业价值文化。</p>
+    <p>在司歌征集期间，主办方陆陆续续收到了来自五湖四海的创作者们的优异作品。作品形式多样，不乏有才华横溢的歌词创作，饱含力量与深情的旋律作曲，词曲俱佳的实力良品。一遍又一遍地刷新了传统对司歌的定义，让三棵树的企业文化在词曲的五线谱中流淌飞扬。</p>
+</div>
+<!--=============================产品======================================-->
+<div id="product">
+    <div class="container">
+        <h2 class="text-center padding">产品领域</h2>
+            {volist name="procate" id="v"}
+            {if $i%2 == 0}
+                <div class="row productItem">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="item">
+                                <h2 class="productTitle"><a title="{$v.title}" href="{:url('index/Pro/lists',['id'=>$v['id']])}">{$v.name}</a></h2>
+                                <div style="padding: 10px 20px;">
+                                    <p class="productTitleDetial">{$v.abs}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-md-offset-1 col-sm-3 col-xs-12">
+                            <div class="productImg">
+                                <img src="{$v.thumb}" alt="{$v.alt}" title="{$v.title}">
+                            </div>
+                        </div>
+                </div>
+            {else/}
+                <div class="row productItem">
+                    <div class="col-md-5 col-sm-3 col-xs-12">
+                        <div class="productImg">
+                            <img style="border: none;" src="{$v.thumb}" alt="{$v.alt}" title="{$v.title}">
+                        </div>
                     </div>
+                    <div class="col-md-6 col-md-offset-1 col-sm-6 col-xs-12">
+                        <div class="item">
+                            <h2 class="productTitle"><a title="{$v.title}" href="{:url('index/Pro/lists',['id'=>$v['id']])}">{$v.name}</a></h2>
+                            <div style="padding: 10px 20px;">
+                                <p class="productTitleDetial">{$v.abs}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {/if}
+            {/volist}
+
+    </div>
+</div>
+<!--============================色带===================================-->
+<div class="segmentation marginTop" style="background: url('/static/img/index/pattern-1.png') #F5F5F5;padding: 80px 50px;">
+    <p>三棵树的企业经营哲学来源于老子《道德经》的“道生一、一生二、二生三、三生万物”，“人法地，地法天，天法道，道法自然。”“无为而治”“敬天爱人”等;同时，企业图腾“树”代表健康、绿色、生命力，“三棵树”名字由此而来。</p>
+    <p>为了进一步弘扬“道法自然”的企业文化精神，丰富公司的文化载体，树立企业形象，三棵树涂料股份有限公司进行了文化升级，并以50万公开有奖征集司歌的形式，传递企业价值文化。</p>
+    <p>在司歌征集期间，主办方陆陆续续收到了来自五湖四海的创作者们的优异作品。作品形式多样，不乏有才华横溢的歌词创作，饱含力量与深情的旋律作曲，词曲俱佳的实力良品。一遍又一遍地刷新了传统对司歌的定义，让三棵树的企业文化在词曲的五线谱中流淌飞扬。</p>
+</div>
+<!--==============================新闻=================================-->
+<div id="news">
+    <div class="container">
+        <h2 class="text-center padding">新闻中心</h2>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="newImg">
+                    <div class="row">
+                        <div class="box">
+                            <div class="col-md-10 col-sm-10 col-xs-10">
+                                <ul class="pic-box" id="newsBanner">
+                                    {volist name="pNews" id="v"}
+                                    <li><a href="{:url('index/News/show',['id'=>$v['id']])}"><img style="padding: 8px;border: 1px solid #EEEEEE;border-radius: 5px" src="{$v.thumb}" title="{$v.title}" alt="{$v.alt}" class="newsPic"></a></li>
+                                    {/volist}
+                                </ul>
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-2">
+                                <ul class="num-box">
+                                    <li class="active numBoxLi"><a href="javascript:;"></a></li>
+                                    <li class="numBoxLi"><a href="javascript:;"></a></li>
+                                    <li class="numBoxLi"><a href="javascript:;"></a></li>
+                                    <li class="numBoxLi"><a href="javascript:;"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {volist name="lNews" id="v"}
+                <div class="newsItem">
+                    <a href="{:url('index/News/show',['id'=>$v['id']])}"><h4 class="question">{$v.name|substr=###,0,81}</h4><span>发布日期：{$v.addtime|date="Y-m-d",###}</span></a>
                 </div>
                 {/volist}
             </div>
-            <!-- 如果需要导航按钮 -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
         </div>
     </div>
-</section>
-<!--&lt;!&ndash;==================解决方案================&ndash;&gt;-->
-<section id="solution" class="overFlow">
-    <div class="wow bounceInDown titleContain">
-        <h2 class="sectionTitle soluteTitle">产品中心</h2>
-        <p class="subTitle">PRODUCT</p>
-    </div>
-    <div class="wow bounceInUp inlineBlock overFlow" id="solutionBanner">
-        <div class="wrap" id="wrap">
-            <div class="slide" id="slide">
-                <ul>
-
-                    <li><a href="#"><img src="images/slidepic1.png" alt=""/></a></li>
-                    <li><a href="#"><img src="images/slidepic2.png" alt=""/></a></li>
-                    <li><a href="#"><img src="images/slidepic3.png" alt=""/></a></li>
-                    <li><a href="#"><img src="images/slidepic4.png" alt=""/></a></li>
-                    <li><a href="#"><img src="images/slidepic5.png" alt=""/></a></li>
-                </ul>
-                <div class="arrow" id="arrow">
-                    <a href="javascript:;" class="prev" id="arrLeft"></a>
-                    <a href="javascript:;" class="next" id="arrRight"></a>
-                </div>
+</div>
+<!--============================色带===================================-->
+<div class="segmentation marginTop" style="background: url('/static/img/index/pattern-1.png') #56BC94;padding: 80px 50px;">
+    <p>三棵树的企业经营哲学来源于老子《道德经》的“道生一、一生二、二生三、三生万物”，“人法地，地法天，天法道，道法自然。”“无为而治”“敬天爱人”等;同时，企业图腾“树”代表健康、绿色、生命力，“三棵树”名字由此而来。</p>
+    <p>为了进一步弘扬“道法自然”的企业文化精神，丰富公司的文化载体，树立企业形象，三棵树涂料股份有限公司进行了文化升级，并以50万公开有奖征集司歌的形式，传递企业价值文化。</p>
+    <p>在司歌征集期间，主办方陆陆续续收到了来自五湖四海的创作者们的优异作品。作品形式多样，不乏有才华横溢的歌词创作，饱含力量与深情的旋律作曲，词曲俱佳的实力良品。一遍又一遍地刷新了传统对司歌的定义，让三棵树的企业文化在词曲的五线谱中流淌飞扬。</p>
+</div>
+<!--=============================知识问答======================================-->
+<div id="knowledge">
+    <div class="container">
+        <h2 class="text-center padding">知识问答</h2>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {volist name="ask" id="v" mod="2"}
+                {eq name="mod" value="1"}
+                <div class="item">
+                    <h3 class="question"><i class="questionIcon"></i>{$v.ques}?</h3>
+                    <p class="answer">{$v.anser}</p>
+                </div><!--//item-->
+                {/eq}
+                {/volist}
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {volist name="ask" id="v" mod="2"}
+                {eq name="mod" value="0"}
+                <div class="item">
+                    <h3 class="question"><i class="questionIcon"></i>{$v.ques}?</h3>
+                    <p class="answer">{$v.anser}</p>
+                </div><!--//item-->
+                {/eq}
+                {/volist}
             </div>
         </div>
     </div>
-</section>
-<!--=======================新闻=======================-->
-<section id="news" class="overFlow">
-    <div class="wow bounceInDown titleContain">
-        <h2 class="sectionTitle">新闻中心</h2>
-        <p class="subTitle">NEWS</p>
-    </div>
-    <!--<div class="newsTab">-->
-        <!--<button class="wow bounceInRight animated active newsBtn" type="button">公司新闻</button>-->
-        <!--<button class="wow bounceInLeft animated newsBtn" type="button">行业动态</button>-->
-    <!--</div>-->
-    <div class="inlineBlock newsContainer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-5 wow bounceInLeft col-xs-12">
-                    <div class="newsList">
-                        <div class="newsCard">
-                            <div class="container-fluid">
+</div>
+<!--============================色带===================================-->
+<div class="segmentation marginTop" style="background: url('/static/img/index/pattern-1.png') #56BC94;padding: 80px 50px;">
+    <p>三棵树的企业经营哲学来源于老子《道德经》的“道生一、一生二、二生三、三生万物”，“人法地，地法天，天法道，道法自然。”“无为而治”“敬天爱人”等;同时，企业图腾“树”代表健康、绿色、生命力，“三棵树”名字由此而来。</p>
+    <p>为了进一步弘扬“道法自然”的企业文化精神，丰富公司的文化载体，树立企业形象，三棵树涂料股份有限公司进行了文化升级，并以50万公开有奖征集司歌的形式，传递企业价值文化。</p>
+    <p>在司歌征集期间，主办方陆陆续续收到了来自五湖四海的创作者们的优异作品。作品形式多样，不乏有才华横溢的歌词创作，饱含力量与深情的旋律作曲，词曲俱佳的实力良品。一遍又一遍地刷新了传统对司歌的定义，让三棵树的企业文化在词曲的五线谱中流淌飞扬。</p>
+</div>
 
-                                <div class="row">
-                                    <div class="col-5 col-xs-12">
-                                        <div class="newsCardImg">
-                                            <img src="{$fNew.thumb}" alt="{$fNew.alt}" title="{$fNew.title}">
-                                        </div>
+<!--=============================表单客服评价======================================-->
+<div id="">
+    <div class="container marginTop">
+        <div class="row">
+            <div class="col-sm-4 col-xs-12 col-md-4  borderRight">
+                <div class="row">
+                    <h2 class="text-center padding">提议</h2>
+                    <div class="col-md-10 col-sm-10 col-md-offset-1 col-xs-10">
+                        <form class="form-horizontal">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-4">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control inputBoderRadius" placeholder="名字" required="required">
                                     </div>
-                                    <div class="col-5 col-xs-12">
-                                        <div class="newsCardText">
-                                            <h2>{$fNew.name|substr=0,99}...</h2>
-                                            <p>{$fNew.abs|substr=0,123}...</p>
-                                            <a class="btn" href="{:url('index/News/show',['id'=>$fNew['id']])}">查看</a>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-md-offset-2">
+                                    <div class="form-group">
+                                        <input type="tel" pattern="^(0|86|17951)?(1[0-9]{9}" class="form-control inputBoderRadius" placeholder="电话" required="required">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control inputBoderRadius"  placeholder="邮箱" required="required">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="" class="form-control inputBoderRadius" rows="3" placeholder="意见" required="required"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-6">
+                                    <button type="submit" class="btn btn-default btnSubmit">提交</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+                <h2 class="text-center padding">客户评价</h2>
+                <div class="m2usCon2" id="evaluate">
+                    <div class="">
+                        <div class="a-part por ovh about-fo" style="width:100%;height:300px;">
+                            <div class="main poa t-f noselect">
+                                <div class="detail por">
+                                    <div class="in por">
+                                        <div class="box poa" style="transform: translate(0px, -96px) scale(0.55, 0.55); opacity: 0.08;">
+                                            <div class="box-in dn">
+                                                <div class="time"></div>
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                        <div class="box poa" style="transform: translate(0px, -64px) scale(0.7, 0.7); opacity: 0.2;">
+                                            <div class="box-in dn">
+                                                <div class="time"></div>
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                        <div class="box poa" style="transform: translate(0px, -32px) scale(0.85, 0.85); opacity: 0.4;">
+                                            <div class="box-in dn">
+                                                <div class="time"></div>
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                        <div class="box poa" style="display: block; opacity: 1; top: 0px;">
+                                            <div class="box-in dn">
+                                                <div class="time"></div>
+                                                <p></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-
+                                <div class="list f-cb por ovh">
+                                    <ul class="por">
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                        {volist name="listNews" id="v"}
-                        <p class="newsP"><a href="javascript:;">{$v.name}<span class="date">{$v.addtime|date='Y-m-d',###}</span></a></p>
-                        {/volist}
                     </div>
                 </div>
-                <div class="col-5 wow bounceInRight col-xs-12">
-                    <div class="newsList">
-                        <div class="imgMask">
-                            <img src="{$bNew.thumb}" alt="{$bNew.alt}" title="{$bNew.title}">
-                            <p>{$bNew.name|substr=0,21}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="textCenter">
-                <a class="btn btn_more wow bounceInUp moreBtn" href="javascript:;" >MORE →</a>
             </div>
         </div>
     </div>
-</section>
-<!--=============================产品服务====================-->
-<section class="container overFlow" id="service">
-    <div class="wow bounceInDown titleContain">
-        <h2 class="sectionTitle">客户评价</h2>
-        <p class="subTitle">我们前进的动力</p>
-    </div>
-    <div class="inlineBlock">
-        <div class="container-fluid">
-            <div class="row">
-                {volist name="say" id="v"}
-                <div class="wow bounceInUp col-2 col-xs-12">
-                    <div class="imgBox">
-                        <img src="{$v.thumb}" alt="{$v.alt}" title="{$v.title}">
+</div>
+<!--============================色带===================================-->
+<div class="segmentation marginTop" style="background: url('/static/img/index/pattern-1.png') #56BC94;padding: 80px 50px;">
+    <p>三棵树的企业经营哲学来源于老子《道德经》的“道生一、一生二、二生三、三生万物”，“人法地，地法天，天法道，道法自然。”“无为而治”“敬天爱人”等;同时，企业图腾“树”代表健康、绿色、生命力，“三棵树”名字由此而来。</p>
+    <p>为了进一步弘扬“道法自然”的企业文化精神，丰富公司的文化载体，树立企业形象，三棵树涂料股份有限公司进行了文化升级，并以50万公开有奖征集司歌的形式，传递企业价值文化。</p>
+    <p>在司歌征集期间，主办方陆陆续续收到了来自五湖四海的创作者们的优异作品。作品形式多样，不乏有才华横溢的歌词创作，饱含力量与深情的旋律作曲，词曲俱佳的实力良品。一遍又一遍地刷新了传统对司歌的定义，让三棵树的企业文化在词曲的五线谱中流淌飞扬。</p>
+</div>
+<!--================================友情链接===================================-->
+<div id="link">
+    <div class="container">
+        <h2 class="text-center padding">友情链接</h2>
+        <div class="row">
+            <div class="swiper-container" >
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide linkBg">
+                        <a href="javascript:;" title="" alt="" target="_blank">
+                            <img src="/static/img/index/1.jpg" title="" alt="">
+                        </a>
                     </div>
-                    <div class="serviceInfo">
-                        <h3>{$v.name}</h3>
-                        <p>{$v.content}</p>
+                    <div class="swiper-slide linkBg">
+                        <a href="javascript:;" title="" alt="" target="_blank">
+                            <img src="/static/img/index/1.jpg" title="" alt="">
+                        </a>
+                    </div>
+                    <div class="swiper-slide linkBg">
+                        <a href="javascript:;" title="" alt="" target="_blank">
+                            <img src="/static/img/index/1.jpg" title="" alt="">
+                        </a>
+                    </div>
+                    <div class="swiper-slide linkBg">
+                        <a href="javascript:;" title="" alt="" target="_blank">
+                            <img src="/static/img/index/1.jpg" title="" alt="">
+                        </a>
+                    </div>
+                    <div class="swiper-slide linkBg">
+                        <a href="javascript:;" title="" alt="" target="_blank">
+                            <img src="/static/img/index/1.jpg" title="" alt="">
+                        </a>
+                    </div>
+                    <div class="swiper-slide linkBg">
+                        <a href="javascript:;" title="" alt="" target="_blank">
+                            <img src="/static/img/index/1.jpg" title="" alt="">
+                        </a>
                     </div>
                 </div>
-                {/volist}
             </div>
         </div>
     </div>
-</section>
+</div>
 {/block}
 
+{block name="script"}
+<!--<script type="text/javascript" src="/static/js/index/jquery.easing.1.3.js"></script>-->
+<!--<script type="text/javascript" src="/static/js/index/jquery.transit.js"></script>-->
+<!--<script type="text/javascript" src="/static/js/index/bocfe.js"></script>-->
+<!--<script type="text/javascript" src="/static/js/index/index.js"></script>-->
+<script type="text/javascript">
+    resize();
+    $(window).resize(function() {
+        resize();
+    });
+    function resize(){
+        var W = $(document.body).width();
+        if(W > 992){
+            var mySwiper1 = new Swiper('#link .swiper-container',{
+                slidesPerView : 5,
+                spaceBetween : 20,
+                //spaceBetween : '10%',按container的百分比
+                loop: true,
+                autoplay: {
+                    delay: 3000,//1秒切换一次
+                },
+                autoplayDisableOnInteraction : false,
+                // 如果需要分页器
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+            $("#link .swiper-button-prev").css("left","-30px");
+            $("#link .swiper-button-next").css("right","-30px");
+        }else{
+            var mySwiper2 = new Swiper('#link .swiper-container',{
+                slidesPerView : 1,
+                spaceBetween : 20,
+                loop: true,
+                autoplay: {
+                    delay: 3000,//1秒切换一次
+                },
+                autoplayDisableOnInteraction : false,
+                // 如果需要分页器
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev'
+                }
+            });
+            $("#link .swiper-button-prev").css("left","-20px");
+            $("#link .swiper-button-next").css("right","-20px");
+        }
+    }
+</script>
+<script type="text/javascript">
+    $('.nav-toggle').click(function () {
+        $('body').toggleClass('nav-open');
+    });
+</script>
+{/block}

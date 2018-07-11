@@ -1,0 +1,59 @@
+{extend name="base"/}
+{block name="style"}
+<link rel="stylesheet" href="/static/css/index/news.css">
+{/block}
+{block name="con"}
+<div class="segmentation" style="height:300px;background-color: #d0d6d6;">
+
+</div>
+<div id="newsList">
+    <div class="container marginTop">
+        <div class="col-md-8 col-sm-8 col-xs-12">
+            <div class="newsdetial">
+                <h3 class="newsTitle">{$new.name}</h3>
+                <div class="newsTime">
+                    <span class="publishTime">发布日期：{$new.addtime|date="Y-m-d",###}</span>
+                    <span class="publishPerson">发布人：{$new.uid}</span>
+                </div>
+                <div class="newsWrap">
+                    {$new.detail}
+                </div>
+                <div class="preNews">
+                    <span class="first">上一篇</span>
+                    {if $lastNew}
+                    <a href="{:url('index/News/show',['id'=>$lastNew['id']])}">{$lastNew.name}</a>
+                    {else/}
+                        没有上一篇了...
+                    {/if}
+                </div>
+                <div class="nextNews">
+                    <span class="first">下一篇</span>
+                    {if $nextNew}
+                    <a href="{:url('index/News/show',['id'=>$nextNew['id']])}">{$nextNew.name}</a>
+                    {else/}
+                    没有下一篇了...
+                    {/if}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4  col-xs-12">
+            <h3 class="dashTitle">近期添加</h3>
+            {volist name="nNews" id="v"}
+            <div class="newsDetialItem ">
+                <div class="newsDetialTltle">
+                    <a href="{:url('index/News/show',['id'=>$v['id']])}" title="{$v.name}">
+                    {$v.name}
+                    </a>
+                </div>
+                <div class="newsDetialTime">
+									<span class="date">
+										发布日期：
+										<span class="detialDate">{$v.addtime|date="Y-m-d",###}</span>
+									</span>
+                </div>
+            </div>
+            {/volist}
+        </div>
+    </div>
+</div>
+{/block}

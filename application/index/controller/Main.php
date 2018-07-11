@@ -87,7 +87,9 @@ class Main extends Controller
 
         if(!$db){return null;}
         $result = [];
-        $list = $db->paginate($limit,false);
+        $list = $db->paginate($limit,false,[
+            'type'     => 'page'
+        ]);
         $page = $list->render();
         $result['list'] = $list;
         $result['page'] = $page;

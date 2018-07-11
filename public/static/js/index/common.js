@@ -6,7 +6,7 @@
  * +----------------------------------------------------------------------
  * |Author：guosj
  * +----------------------------------------------------------------------
- * |CreatTime:2018/5/22
+ * |CreatTime:2018/7/3
  * +----------------------------------------------------------------------
  */
 $(function(){
@@ -14,53 +14,32 @@ $(function(){
     $(window).scroll(function () {
         //改变导航栏的样式
         var winPos = $(window).scrollTop();
-        if(winPos>60){
-            $("#header").addClass("headerActive");
+        var headerH = $("#header").height();
+        if(winPos>headerH){
+            $(".secondHeader").addClass("activeHeader");
         }else{
-            $("#header").removeClass("headerActive");
+            $(".secondHeader").removeClass("activeHeader");
         }
     });
-    $(window).resize(function() {
-        w();
-    });
-    w();
-    function w(){
-        var windowW = $(window).width();
-        if(windowW>920){
-            console.log("电脑端");
-            $("#header .navContainer").removeClass("mobileHeader");
-            $("#header #logo").removeClass("mobileLogo");
-            $("#header #navBar").removeClass("mobileNav");
-            $("#header #navBar").addClass("pcNav");
-            $(".mobileBtn").hide();
+
+    /*===================手机端导航的消失与出现=====================*/
+    $("#navToggleIcon").click(function(){
+        if($("#navToggleIcon").hasClass("glyphicon-align-justify")){
+            $("#navToggleIcon").removeClass("glyphicon-align-justify");
+            $("#navToggleIcon").addClass("glyphicon-remove");
         }else{
-            console.log("手机端");
-            $("#header .navContainer").addClass("mobileHeader");
-            $("#header #logo").addClass("mobileLogo");
-            $("#header #navBar").addClass("mobileNav");
-            $(".mobileBtn").show();
-            $(window).scroll(function () {
-                //改变导航栏的样式
-                var winPos = $(window).scrollTop();
-                if(winPos>60){
-                    $(".mobileBtn").css("color","#565656");
-                }else{
-                    $(".mobileBtn").css("color","#fff");
-                }
-            });
+            $("#navToggleIcon").addClass("glyphicon-align-justify");
+            $("#navToggleIcon").removeClass("glyphicon-remove");
         }
-    }
-    var windowH = $(document).height();
-    $(".mobileNav").height(windowH);
-    $("#navBar").height(windowH);
-    $(".hideNav").height(windowH);
-    //手机端  二级菜单的显示与隐藏
-    $(".mobileBtn").click(function(){
-        $(".mobileNav").animate({left:0});
-        $(".hideNav").animate({right:0});
+        $('body').toggleClass('nav-open');
     });
-    $(".hideNav").click(function(){
-        $(".mobileNav").animate({left:-600});
-        $(".hideNav").animate({right:-500});
-    })
+
+    /*===============================返回顶部=====================*/
+    var top = $("#top");
+    top.click(function(){
+        $("html,body").animate({scrollTop:0},500);
+    });
+
+    /*==============================图片4/3====================================*/
+    $(".IMG").height(0.75*$(".IMG").width());
 });

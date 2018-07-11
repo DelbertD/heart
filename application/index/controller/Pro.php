@@ -21,6 +21,14 @@ class Pro extends Main
         parent::__construct($request);
     }
 
+    /**
+     * 产品列表页
+     * @param int $cid
+     * @return mixed
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
     public function index($cid = 0)
     {
         if($cid == 0)
@@ -39,12 +47,33 @@ class Pro extends Main
             ->where('is_show',1)
             ->where('cid',$cid)
             ->order('sort,id')
-            ->field('id,name,abs,uid,addtime,thumb,title,alt');
-        $pro = parent::_page($db,12);
+            ->field('id,name,abs,uid,ctime,addtime,thumb,title,alt');
+        $pro = parent::_page($db,3);
         $this->assign([
             'cateInfo' => $cateInfo,
             'pro'   => $pro,
             'cid'       => $cid
+        ]);
+        return $this->fetch();
+    }
+
+    /**
+     * 产品详情页
+     * @param int $id
+     * @return mixed
+     */
+    public function show($id = 0)
+    {
+        //查询相关产品详细信息
+        $pro = db('pro')
+            ->alias('p')
+            ->join('pro_dtl pd','p.id=pd.pid')
+            ->where('p.id',$id)
+            ->where('is_show',1)
+            ->limit(1)
+            ->find();
+        $this->assign([
+            'pro'   => $pro
         ]);
         return $this->fetch();
     }

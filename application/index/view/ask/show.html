@@ -1,0 +1,25 @@
+{extend name="base"/}
+{block name="style"}
+<link rel="stylesheet" href="/static/css/index/news.css">
+{/block}
+{block name="con"}
+<div class="segmentation" style="height:300px;background-color: #d0d6d6;">
+
+</div>
+<div id="newsList">
+    <div class="container marginTop">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="newsdetial">
+                <h3 class="newsTitle">{$ask.ques}</h3>
+                <div class="newsTime">
+                    <span class="publishTime">发布日期：{$ask.addtime|date="Y-m-d",###}</span>
+                    <span class="publishPerson">发布人：{$ask.uid}</span>
+                </div>
+                <div class="newsWrap">
+                    {$ask.anser}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

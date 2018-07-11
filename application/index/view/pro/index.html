@@ -1,46 +1,68 @@
 {extend name="base"/}
 {block name="style"}
-<link rel="stylesheet" href="/static/css/index/prolist.css">
+<link rel="stylesheet" href="/static/css/index/news.css">
 {/block}
 {block name="con"}
-<!--=======================banner=======================-->
-<section style="background-color: #00aff0;height:300px">
-
-</section>
-<!--=============================产品列表====================-->
-<section class="inlineBlock overFlow paddingBottom50">
-    <div class="container overFlow">
-        <div class="newsTab overFlow">
-            {volist name="cateInfo" id="v"}
-            {eq name="key" value="0"}
-            <a href="{:url('index/Pro/index',['cid'=>$v['id']])}" {if condition="$v['id']==$cid"}class="wow bounceInRight animated active newsBtn"{else/}class="wow bounceInRight animated newsBtn"{/if} type="button">{$v.name}</a>
-            {else/}
-            <a href="{:url('index/Pro/index',['cid'=>$v['id']])}" {if condition="$v['id']==$cid"}class="wow bounceInRight animated active newsBtn"{else/}class="wow bounceInRight animated newsBtn"{/if} type="button">{$v.name}</a>
-            {/eq}
-            {/volist}
-        </div>
-        <div class="container-fluid">
-            <div class="row">
-                {volist name="pro.list" id="v"}
-                <div class="col-5 col-xs-12 paddingBottom30 wow bounceInRight">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-5 col-xs-12">
-                                <img src="{$v.thumb}" alt="{$v.alt}" title="{$v.title}">
-                            </div>
-                            <div class="col-5 col-xs-12">
-                                <div class="paddingBottom30 container">
-                                    <h3 class="titleP">{$v.name}</h3>
-                                    <a href="javascript:;" class="more">查看更多</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<div class="segmentation" style="height:300px;background: url('/static/img/index/pattern-1.png') #74907E;">
+    <div class="container" style="position: relative;width:100%;height:100%;margin:0;padding:0">
+        <div class="parent1" style="position: absolute;bottom:30px;">
+            <div class="child">
+                {volist name="cateInfo" id="v"}
+                <a title="{$v.title}" href="{:url('index/Pro/index',['cid'=>$v['id']])}" {if condition="$cid==$v['id']"}class="productBtn active"{else/}class="productBtn"{/if}>{$v.name}</a>
                 {/volist}
             </div>
         </div>
     </div>
-</section>
+</div>
+<div id="newsList">
+    <div class="container">
+        {volist name="pro.list" id="v" mod="2"}
+        {eq name="mod" value="1"}
+        <div class="row newsListItem">
+            <div class="col-md-4 col-sm-3 col-xs-12">
+                <div class="newsListImg IMG">
+                    <a href="{:url('index/Pro/show',['id'=>$v['id']])}"><img style="padding: 5px;border-radius: 3px;border: 1px solid #C1C0C0;" src="{$v.thumb}" alt="{$v.alt}" title="{$v.title}"></a>
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-6  col-xs-12">
+                <div class="item bubbleItem">
+                    <h3 class="newsListTitle">{$v.name}</h3>
+                    <p class="newsListTime">上市时间：{$v.ctime|date="Y-m-d",###}</p>
+                    <p class="newsListDetial">
+                        {$v.abs}
+                    </p>
+                    <div class="bubbleLeftContainer">
+                    </div>
+                </div>
+            </div>
+        </div>
+        {else/}
+        <div class="row newsListItem">
+            <div class="col-md-8 col-sm-6 col-xs-12">
+                <div class="item bubbleItem">
+                    <h3 class="newsListTitle">{$v.name}</h3>
+                    <p class="newsListTime">上市时间：{$v.ctime|date="Y-m-d",###}</p>
+                    <p class="newsListDetial">
+                        {$v.abs}
+                    </p>
+                    <div class="bubbleRightContainer">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-3 col-xs-12">
+                <div class="newsListImg IMG">
+                    <a href="{:url('index/Pro/show',['id'=>$v['id']])}"><img style="padding: 5px;border-radius: 3px;border: 1px solid #C1C0C0;" src="{$v.thumb}" alt="{$v.alt}" title="{$v.title}"></a>
+                </div>
+            </div>
+        </div>
+        {/eq}
+        {/volist}
+        <div class="wrap">
+            <div class="inner newsBtnInner">
+                {$pro.page}
+            </div>
+        </div>
+    </div>
+</div>
 {/block}
 

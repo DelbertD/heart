@@ -1,97 +1,148 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" >
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
     <title>{$title}</title>
-    <link rel="icon" href="/static/admin/imgs/icon.ico" type="image/x-icon">
-    <meta name="keywords" content="{$keywords}" />
     <meta name="description" content="{$desc}" />
+    <meta name="Keywords" content="{$keywords}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     {include file='extra@index/inc'}
-    {block name="style"}
-    <!--css样式-->
-    {/block}
-    <script>new WOW().init();</script>
+    {block name="style"}{/block}
 </head>
-<body>
-<!--=====================顶部导航====================-->
-<header id="header">
-    <div class="navContainer mobileHeader">
-        <div id="logo" class="mobileLogo">
-            <a href="javascript:;">
-                <h1>
-                    <img src="img/logo1.png" alt="">
-                </h1>
-            </a>
+<body class="loading">
+<div class="phone">
+    <div class="screen">
+        <div class="nav-toggle">
+            <div class="icon"></div>
         </div>
-        <i class="glyphicon glyphicon-list mobileBtn" style="color:#fff"></i>
-        <div id="navBar" class="mobileNav">
-            <ul>
-                {volist name="nav" id="v"}
-                <li><a href="{:url($v.url)}" title="{$v.tips}" class="link"><h2>{$v.name}</h2></a></li>
-                {/volist}
-            </ul>
-        </div>
-        <div class="hideNav">
-
-        </div>
-    </div>
-</header>
-{block name="con"}
-<!--主体内容区域-->
-{/block}
-<!--==================================footer============================================-->
-<footer>
-    <div class="footerContainer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-4 col-xs-12 wow bounceInUp">
-                    <p class="footerTitle">底部标题</p>
-                    <p>内容</p>
+        <div class="lower-screen">
+            <div id="top">
+                <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+            </div>
+            <header id="header">
+                <div class="firstHeader">
+                    <div class="container">
+                        <div class="row">
+                            <div class="headerLeft">
+                                <span>电话：029-84503374</span>
+                                <span>时间：上午9点至下午6点</span>
+                            </div>
+                            <div class="headerRight">
+                                <div class="share">
+                                    <img src="" alt="">
+                                </div>
+                                <div class="share">
+                                    <img src="" alt="">
+                                </div>
+                                <div class="share">
+                                    <img src="" alt="">
+                                </div>
+                                <div class="share">
+                                    <img src="" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-4 col-xs-12 wow bounceInUp">
-                    <p class="footerTitle">底部标题</p>
-                    <p>内容</p>
+                <div class="secondHeader container">
+                    <div class="logo">
+                        <a href="javascript:;">
+                            <h1>
+                                <img src="img/logo1.png" alt="LOGO">
+                            </h1>
+                        </a>
+                    </div>
+                    <div class="bc">
+                        <div class="nav">
+                            <ul>
+                                {volist name="nav" id="v"}
+                                <li>
+                                    <a href="{:url($v.url)}" title="{$v.tips}">
+                                        <h2>{$v.name}</h2>
+                                    </a>
+                                </li>
+                                {/volist}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-4 col-xs-12 wow bounceInUp">
-                    <p class="footerTitle">底部标题</p>
-                    <p>内容</p>
+            </header>
+            {block name="con"}{/block}
+            <footer id="footer">
+                <!--<div class="row marginTop">-->
+                <div class="col-sm-4 col-xs-12 col-md-4">
+                    <h2>产品</h2>
+                    <ul>
+                        <li><a href="javascript:;"><h3>黑龙江省花园强制戒毒所禁毒教育基地</h3></a></li>
+                        <li><a href="javascript:;"><h3>产品1</h3></a></li>
+                        <li><a href="javascript:;"><h3>产品1</h3></a></li>
+                        <li><a href="javascript:;"><h3>黑龙江省花园强制戒毒所禁毒教育基地</h3></a></li>
+                        <li><a href="javascript:;"><h3>产品1</h3></a></li>
+                        <li><a href="javascript:;"><h3>产品1</h3></a></li>
+                        <li><a href="javascript:;"><h3>黑龙江省花园强制戒毒所禁毒教育基地</h3></a></li>
+                        <li><a href="javascript:;"><h3>产品1</h3></a></li>
+                        <li><a href="javascript:;"><h3>产品1</h3></a></li>
+                    </ul>
                 </div>
-                <div class="col-4 col-xs-12 wow bounceInUp">
-                    <p class="footerTitle">底部标题</p>
-                    <p>内容</p>
+                <div class="col-sm-4 col-xs-12 col-md-4">
+                    <h2>新闻</h2>
+                    <ul>
+                        <li><a href="javascript:;"><h3>黑龙江省花园强制戒毒所禁毒教育基地</h3></a></li>
+                        <li><a href="javascript:;"><h3>产品1</h3></a></li>
+                        <li><a href="javascript:;"><h3>产品1</h3></a></li>
+                        <li><a href="javascript:;"><h3>黑龙江省花园强制戒毒所禁毒教育基地</h3></a></li>
+                        <li><a href="javascript:;"><h3>产品1</h3></a></li>
+                        <li><a href="javascript:;"><h3>产品1</h3></a></li>
+                        <li><a href="javascript:;"><h3>黑龙江省花园强制戒毒所禁毒教育基地</h3></a></li>
+                        <li><a href="javascript:;"><h3>产品1</h3></a></li>
+                        <li><a href="javascript:;"><h3>产品1</h3></a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 col-xs-12 col-md-4">
+                    <h2>公司信息</h2>
+                    <ul>
+                        <li><a href="javascript:;"><h3>黑龙江省花园强制戒毒所禁毒教育基地</h3></a></li>
+                        <li><a href="javascript:;"><h3>产品1</h3></a></li>
+                        <li><a href="javascript:;"><h3>产品1</h3></a></li>
+                        <li><a href="javascript:;"><h3>黑龙江省花园强制戒毒所禁毒教育基地</h3></a></li>
+                        <li><a href="javascript:;"><h3>产品1</h3></a></li>
+                        <li><a href="javascript:;"><h3>产品1</h3></a></li>
+                        <li><a href="javascript:;"><h3>黑龙江省花园强制戒毒所禁毒教育基地</h3></a></li>
+                        <li><a href="javascript:;"><h3>产品1</h3></a></li>
+                        <li><a href="javascript:;"><h3>产品1</h3></a></li>
+                    </ul>
+                    <div class="col-md-4 col-md-offset-1 infoImg">
+                        <img src="img/1.jpg" alt="">
+                    </div>
+                    <div class="col-md-4 col-md-offset-1 infoImg">
+                        <img src="img/1.jpg" alt="">
+                    </div>
+                </div>
+                <!--</div>-->
+            </footer>
+            <div id="industrySection">
+                <div class="industrySectionContainer">
+			<span id="industrySpan">
+				<script language="javaScript" src="http://wljg.xags.gov.cn/bsjs_new/610113/6101136101130000023456.js"></script>
+			</span>
+                    <span id="ICPSpan">陕ICP备16018587号</span>
                 </div>
             </div>
         </div>
     </div>
-    <div class="copyRight wow bounceInUp">CopyRight© 2018新光科技有限公司All Rights Reserved</div>
-</footer>
-<script>
-    var mySwiper = new Swiper ('#banner .swiper-container', {
-        loop: true,
-        autoplay: {
-            delay: 2000,//1秒切换一次
-        },
-        autoplayDisableOnInteraction : false,
-        // 如果需要分页器
-        pagination: {
-            el: '.swiper-pagination',
-            clickable:true
-        }
-    });
-    //
-    var caseSwiper = new Swiper ('#caseBanner .swiper-container', {
-        loop: true,
-        autoplay: {
-            delay: 2000,//1秒切换一次
-        },
-        autoplayDisableOnInteraction : false,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev'
-        }
-    });
-</script>
+</div>
+<script src="/static/js/index/three.js"></script>
+<script src='/static/js/index/imagesloaded.pkgd.js'></script>
+<script src='/static/js/index/TweenMax.min.js'></script>
+<script src="/static/js/index/banner.js"></script>
+<script src="/static/js/index/jquery.js"></script>
+<script src="/static/js/index/zturn.js"></script>
+<script src="/static/plugs/swiper/swiper-4.2.2.min.js"></script>
+<script src="/static/js/index/jquery.easing.1.3.js"></script>
+<script src="/static/js/index/jquery.transit.js"></script>
+<script src="/static/js/index/bocfe.js"></script>
+<script src="/static/js/index/index.js"></script>
+<script src="/static/js/index/common.js"></script>
+{block name="script"}{/block}
 </body>
 </html>

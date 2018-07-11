@@ -1,281 +1,495 @@
-*{
+ul{
+    list-style: none;
+    float: left;
+}
+/*================================气泡=========================*/
+.bubbleItem{
+    /*border:1px solid #ddd;*/
+    border: 5px solid #56bc94;
+    position: relative;
+    padding: 10px;
+    width: 100%;
+    height: 255px;
+    border-radius: 5px;
+    margin: 10px auto 0;
+    color: #000;
+    background: url("/static/img/index/pattern-1.png") #fff;
+}
+.bubbleItem .bubbleLeftContainer{
+    position:absolute;
+    top: -3px;
+    left: -20px; /* 圆角的位置需要细心调试哦 */
+    width:0;
+    height:0;
+    font-size:0;
+    border:solid 8px;
+    border-color:#fff #56bc94  #fff #fff ;
+}
+.bubbleItem .bubbleRightContainer{
+    position:absolute;
+    top: -2px;
+    right: -21px; /* 圆角的位置需要细心调试哦 */
+    width:0;
+    height:0;
+    font-size:0;
+    border:solid 8px;
+    border-color:#fff  #fff #fff #56bc94;
+}
+/*=================================居中=======================*/
+.wrap {
+    float: left; /* 自适应内容宽度 */
+    position: relative;
+    left: 50%;
+}
+.inner {
+    position: relative;
+    left: -50%;
+}
+.parent1{
+    display: table;
+    width: 100%;
+}
+.parent1 .child{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+}
+
+/*==============================top===========================*/
+#top{
+    position:fixed;
+    right:40px;
+    bottom:40px;
+    color:#fff;
+    width:40px;
+    height:40px;
+    font-size:30px;
+    background-color: #585954;
+    z-index:999999998;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#top .glyphicon{
+    margin:5px;
+}
+/*==========================header========================*/
+@media (min-width: 1200px){
+    #navToggle{
+        display: none;
+    }
+    header .firstHeader{
+        padding:20px 0 40px 0;
+        height:26px;
+        border-bottom:1px solid #ddd;
+    }
+    header .firstHeader .headerLeft{
+        font-size:12px;
+        float: left;
+    }
+    header .firstHeader .headerLeft span{
+        padding-right: 20px;
+    }
+    header .firstHeader  .headerRight{
+        float: right;
+        height:26px;
+    }
+    header .firstHeader  .headerRight .share{
+        float: left;
+        width:26px;
+        height:26px;
+        margin-left:20px;
+        border:1px solid #ddd;
+    }
+    header .firstHeader  .headerRight .share img{
+        width:100%;
+    }
+    header .secondHeader{
+        padding-bottom:20px;
+    }
+    header .secondHeader.activeHeader{
+        position:fixed;
+        top:0;
+        left:0;
+        z-index:999999;
+        background-color: #fff;
+        border-bottom:1px solid #ddd;
+        width:100%;
+        padding-left:40px;
+        padding-right:40px;
+    }
+    header .secondHeader .logo{
+        float: left;
+        width:180px;
+    }
+    header .secondHeader .logo a,header .secondHeader .logo a h1,header .secondHeader .logo a h1 img{
+        width:100%;
+    }
+    header .secondHeader .nav{
+        float: right;
+    }
+    header .secondHeader .nav ul li{
+        float: left;
+    }
+    header .secondHeader .nav ul li a{
+        color: #000000;
+        display:inline-block;
+        padding:22px 30px 0 30px;
+        line-height: 100%;
+    }
+    header .secondHeader .nav ul li a h2{
+        font-size: 14px;
+    }
+}
+@media (min-width: 992px){
+    header .firstHeader{
+        padding:20px 0 40px 0;
+        height:26px;
+        border-bottom:1px solid #ddd;
+    }
+    header .firstHeader .headerLeft{
+        font-size:12px;
+        float: left;
+    }
+    header .firstHeader .headerLeft span{
+        padding-right: 20px;
+    }
+    header .firstHeader  .headerRight{
+        float: right;
+        height:26px;
+    }
+    header .firstHeader  .headerRight .share{
+        float: left;
+        width:26px;
+        height:26px;
+        margin-left:20px;
+        border:1px solid #ddd;
+    }
+    header .firstHeader  .headerRight .share img{
+        width:100%;
+    }
+    header .secondHeader{
+        padding-bottom:20px;
+    }
+    header .secondHeader.activeHeader{
+        position:fixed;
+        top:0;
+        left:0;
+        z-index:999999;
+        background-color: #fff;
+        border-bottom:1px solid #ddd;
+        width:100%;
+        padding-left:40px;
+        padding-right:40px;
+    }
+    header .secondHeader .logo{
+        float: left;
+        width:180px;
+    }
+    header .secondHeader .logo a,header .secondHeader .logo a h1,header .secondHeader .logo a h1 img{
+        width:100%;
+    }
+    header .secondHeader .nav{
+        float: right;
+    }
+    header .secondHeader .nav ul li{
+        float: left;
+    }
+    header .secondHeader .nav ul li a{
+        color: #000000;
+        display:inline-block;
+        padding:22px 30px 0 30px;
+        line-height: 100%;
+    }
+    header .secondHeader .nav ul li a h2{
+        font-size: 14px;
+    }
+}
+@media (max-width: 768px){
+    header .firstHeader{
+        display: none;
+    }
+    header .secondHeader .logo{
+        display: none;
+    }
+    body.nav-open .nav {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        z-index:9999999999999999999;
+    }
+    body.nav-open .nav ul li a{
+        display: block;
+    }
+    body.nav-open .nav-toggle {
+        box-shadow: none;
+    }
+    body.nav-open .nav-toggle:before {
+        width: 3000px;
+        height: 3000px;
+        background-color: rgba(74, 117, 230, 0.95);
+    }
+    #banner{
+        display: block;
+        -webkit-transition-duration: 0.66s;
+        transition-duration: 0.66s;
+    }
+    body.nav-open #banner{
+        /*display: none;*/
+        -webkit-transition-duration: 0.66s;
+        transition-duration: 0.66s;
+    }
+    body.nav-open .nav-toggle .icon {
+        width: 0;
+    }
+    body.nav-open .nav-toggle .icon:before {
+        -webkit-transform: translateY(9px) rotate(45deg);
+        -ms-transform: translateY(9px) rotate(45deg);
+        transform: translateY(9px) rotate(45deg);
+    }
+    body.nav-open .nav-toggle .icon:after {
+        -webkit-transform: translateY(-9px) rotate(-45deg);
+        -ms-transform: translateY(-9px) rotate(-45deg);
+        transform: translateY(-9px) rotate(-45deg);
+    }
+    .nav-toggle {
+        width: 60px;
+        height: 60px;
+        top:10px;
+        left:10px;
+        z-index: 9999999999;
+        border-radius: 50%;
+        margin: 10px;
+        position: fixed;
+        cursor: pointer;
+        box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2);
+        -webkit-transition-duration: 0.66s;
+        transition-duration: 0.66s;
+        -webkit-transition-timing-function: swing;
+        transition-timing-function: swing;
+    }
+    .nav-toggle:before {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: #4A75E6;
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        -ms-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+        -webkit-transition-duration: 0.66s;
+        transition-duration: 0.66s;
+        -webkit-transition-timing-function: swing;
+        transition-timing-function: swing;
+    }
+    .nav-toggle .icon {
+        width: 30px;
+        height: 4px;
+        background-color: white;
+        border-radius: 2px;
+        position: absolute;
+        top: 28px;
+        left: 15px;
+        -webkit-transition-duration: 0.5s;
+        transition-duration: 0.5s;
+        transiting-timing-function: swing;
+    }
+    .nav-toggle .icon:before,
+    .nav-toggle .icon:after {
+        width: 30px;
+        height: 4px;
+        background-color: white;
+        border-radius: 2px;
+        content: "";
+        position: absolute;
+        left: 0;
+        -webkit-transition-duration: 0.5s;
+        transition-duration: 0.5s;
+        -webkit-transition-timing-function: swing;
+        transition-timing-function: swing;
+    }
+    .nav-toggle .icon:before {
+        top: -9px;
+    }
+    .nav-toggle .icon:after {
+        top: 9px;
+    }
+    .nav {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        padding: 0 20px;
+        -webkit-transition-duration: 0.66s;
+        transition-duration: 0.66s;
+        -webkit-transition-timing-function: swing;
+        transition-timing-function: swing;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+    .nav ul{
+        width:100%;
+        margin:0;
+        padding:0;
+    }
+    .nav ul li {
+        list-style: none;
+    }
+    .nav ul li a {
+        /*display: block;*/
+        padding: 10px 0;
+        text-align: center;
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+        -webkit-transition-duration: 0.25s;
+        transition-duration: 0.25s;
+        display: none;
+    }
+    .nav ul:hover li a {
+        opacity: 0.5;
+    }
+    .nav ul:hover li:hover a {
+        opacity: 1;
+    }
+}
+
+
+/*===================================第三===========================*/
+#activeHeader{
+    position:absolute;
+    top:0;
+    left:0;
+    display: none;
+}
+#activeHeader .threeHeader{
+    padding-bottom:20px;
+}
+#activeHeader  .threeHeader .logo{
+    float: left;
+    width:180px;
+}
+#activeHeader  .threeHeader .logo a,#activeHeader  .threeHeader .logo a h1,#activeHeader  .threeHeader .logo a h1 img{
+    width:100%;
+}
+#activeHeader  .threeHeader .nav{
+    float: right;
+}
+#activeHeader  .threeHeader .nav ul li{
+    float: left;
+}
+#activeHeader  .threeHeader .nav ul li a{
+    color: #000000;
+    display:inline-block;
+    padding:22px 30px 0 30px;
+    line-height: 100%;
+}
+#activeHeader  .threeHeader .nav ul li a h2{
+    font-size: 14px;
+}
+/*=======================================================footer===================================================================*/
+#footer{
+    background-color: #393D49;
+    width:100%;
+    color:#fff;
+    display: table;
+    padding:10px 30px;
+}
+#footer h2{
+    font-size:16px;
+    line-height: 24px;
+    margin:0;
+    padding:0;
+    font-weight: 900;
+}
+#footer ul{
+    margin:0;
+    padding:0;
+    width:100%;
+}
+#footer ul li h3{
+    color: rgb(255, 255, 255);
+    line-height: 30px;
+    font-size: 13px;
+    font-family: 微软雅黑;
+    display: block;
     margin:0;
     padding:0;
 }
-.overFlow{
-    overflow-y: hidden;
-}
-ul{
-    list-style: none;
+#footer .infoImg img{
     width:100%;
 }
-li{
-    float: left;
-}
-a{
-    text-decoration: none;
-}
-section{
-    width:100%;
-}
-img {
-    border: 0;
-    vertical-align: middle;
+#industrySection{
     width: 100%;
-    height: auto;
+    height: 60px;
+    background: #222;
+    color: #aaa;
+    text-align: center;
+    font-size: 12px;
+    padding-top: 10px;
+    line-height: 40px;
+    position: relative;
 }
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 500;
-    line-height: 1.1;
-    color: inherit;
-}
-.white{
-    color:#fff;
-}
-/*==============头部导航栏================*/
-#header{
-    width:100%;
-    height:60px;
-    background-color: transparent;
-    position:fixed;
-    top:0;
-    left:0;
-    z-index:9999;
-    border-bottom:1px solid #fff;
-}
-#header .navContainer{
-    width:1120px;
-    height:60px;
-    margin:0 auto;
-}
-#header #logo{
-    width:180px;
-    height:44px;
-    float: left;
-    position:relative;
-    margin-top:6px;
-}
-#logo img{
-    transition: all 0.5s linear 0s;
-    -moz-animation: all 0.5s linear 0s ;
-    -webkit-animation:  all 0.5s linear 0s;
-    -o-animation:  all 0.5s linear 0s;
-    position:absolute;
-    display: inline-block;
-    width:100%;
-    height:100%;
-    left:0;
-}
-#logo img:hover{
-    left:10px;
-}
-#header #logo a,#header #logo a h1,#header #logo a img{
-    display: inline-block;
-    width:100%;
-    height:100%;
-    margin:0;
-}
-#header #navBar.pcNav{
-    float: right;
-    height:60px;
-    line-height:60px;
-}
-#header #navBar.pcNav li{
-    padding:0 23px 0 10px;
-    border-top:2px solid transparent;
-}
-#header #navBar.pcNav li a,#header #navBar.pcNav li a h2{
-    color:#fff;
-    font-size:16px;
-}
-#header #navBar.pcNav li:hover .link{
-    color:#00A3DF;
-    text-decoration: none;
-}
-#header #navBar.pcNav li.active a,#header #navBar.pcNav li:hover a{
-    color:#00A3DF;
-}
-#header .navContainer.mobileHeader{
-    width:100%;
-}
-#header .navContainer .mobileBtn{
-    position:absolute;
-    margin:12px;
-    font-size:20px;
-}
-#header #logo.mobileLogo{
-    float: right;
-    margin-right:30px;
-}
-.mobileNav{
-    width:80%;
-    display: table;
-    background-color: #333333;
-    position:absolute;
-    top:0;
-    left:-600px;
-}
-.hideNav{
-    width:20%;
-    background: rgba(137, 137, 137, .48);
+#industrySection .industrySectionContainer{
     position: absolute;
-    top:0;
-    right:-600px;
+    left: 50%;
+    width: 160px;
+    margin-left: -80px;
 }
-.mobileNav li:nth-of-type(1){
-    padding-top:40px;
-}
-.mobileNav li{
-    width:100%;
-    text-indent: 20px;
-    padding:20px 0;
-}
-#header.headerActive #navBar.mobileNav li a h2,.mobileNav li a h2{
-    color:#fff;
-    font-size:16px;
-    margin:0;
-}
-/*==========大于60px导航栏变色 =======*/
-#header.headerActive{
-    background-color: #fff;
-}
-#header.headerActive #navBar li a h2{
-    color:#333;
-}
-/*====================================footer==============================*/
-footer {
-    background: #323232;
-}
-footer .footerContainer{
-    width:90%;
-    margin-left:auto;
-    margin-right:auto;
-    padding:30px 0;
-    color:#999;
-}
-footer .footerContainer ul{
-    width:100%;
+#industrySection #industrySpan{
+    width:40px;
+    height:40px;
     display: inline-block;
+    float: left;
 }
-footer .footerContainer p{
-    font-size:14px;
-    height:24px;
-    line-height:24px;
+#industrySection #industrySpan a img{
+    display: inline-block;
+    width:40px;
+    line-height: 40px;
 }
-footer .footerContainer p.footerTitle{
-    font-size:18px;
-    height:30px;
-    line-height:30px;
+#industrySection #ICPSpan {
+    display: inline-block;
+    float: left;
+    line-height: 40px;
+    height: 40px;
 }
-footer .copyRight{
-    background: #1b1b1b;
-    line-height: 70px;
-    font-size: 14px;
-    color: #999;
-    width:100%;
-    text-align: center;
+/******** page-start ********/
+.page-size {
+    margin-top: 10px;
+    text-align: right;
 }
-/*=============================标题======================================*/
-.titleContain{
-    width:100%;
-    text-align: center;
+.page-size a {
+    text-decoration: none;
 }
-.titleContain h2.sectionTitle{
-    margin: 30px auto;
-    font-size: 34px;
-    color: #333;
-    font-weight: normal;
+.page-total {
+    padding: 8px 16px;
+    color: #555;
 }
-.titleContain .sectionIntroduce{
-    font-size: 16px;
-    color: #333;
-    line-height: 2;
+.page-disabled {
+    display: inline-block;
+    border: 1px solid #eee;
+    background-color: #eee;
+    padding: 8px 16px;
+    color: #555;
+    cursor: not-allowed;
 }
-/*============================底部padding========================================*/
-.paddingBottom50{
-    padding: 50px 0;
-}
-.paddingBottom30{
-    padding: 30px 0;
-}
-.container{
-    width:90%;
-    margin-left:5%;
-    margin-right:5%;
-}
-.itemCon{
-    padding:40px 20px;
-}
-.itemCon h4{
-    font-size:24px;
-}
-.itemCon p{
-    font-size:16px;
-    height:28px;
-    line-height:28px;
-}
-.borderBottom{
-    border-bottom:1px solid #ddd;
-}
-.newsTab{
-    width: 100%;
-    text-align: center;
-    padding: 20px 0 40px 0;
-    overflow: hidden;
-}
-.newsTab .newsBtn{
-    padding: 10px 30px;
-    background: #fff;
-    border: 1px solid #6d80bc;
-    color: #333;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-}
-.newsTab .newsBtn.active{
-    background: #6d80bc;
+.page-active {
+    margin: 5px;
+    display: inline-block;
+    border: 1px solid #56BC94;
+    background-color: #56BC94;
+    padding: 8px 16px;
     color: #fff;
 }
-/*======================温习居中显示=================================*/
-.textCenter{
-    width:100%;
-    text-align: center;
+.normal {
+    margin: 5px;
+    display: inline-block;
+    border: 1px solid #ddd;
+    padding: 8px 16px;
+    color: #555;
 }
-.boxSizing{
-    box-sizing:border-box;
-    -moz-box-sizing:border-box;
-    -webkit-box-sizing:border-box;
-}
-.border{
-    border:1px solid #ddd;
-}
-@media (min-width: 992px){
-    .col-2{
-        width:20%;
-        float: left;
-    }
-    .col-3{
-        width:33.3%;
-        float: left;
-    }
-    .col-4{
-        width:25%;
-        float: left;
-    }
-    .col-5{
-        width:50%;
-        float: left;
-    }
-    .col-60{
-        width:60%;
-        float: left;
-    }
-}
-.right{
-    float: right;
-}
-.detailContainer{
-    margin-top:-100px;
-    background-color: #fff;
-}
-
