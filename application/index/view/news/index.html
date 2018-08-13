@@ -27,7 +27,7 @@
             </div>
             <div class="col-md-6  col-md-offset-2 col-sm-6 col-xs-12">
                 <div class="item">
-                    <!--<a href="{:url('index/News/show',['id'=>$v['id']])}"><h3 class="newsListTitle">{$v.name}</h3></a>-->
+                    <a href="{:url('index/News/show',['id'=>$v['id']])}"><h3 class="newsListTitle">{$v.name}</h3></a>
                     <p class="newsListTime">发布时间：{$v.addtime|date="Y-m-d",###}</p>
                     <p class="newsListDetial">
                         {$v.abs}
