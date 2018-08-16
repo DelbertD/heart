@@ -63,11 +63,16 @@
     </div>
 </div>
 <!--============================色带===================================-->
-<div class="segmentation marginTop" style="background: url('/static/img/index/index1.png');width: 100%;height: 400px;"></div>
+<div class="segmentation marginTop" style="background: url('/static/img/index/index1.png') center center;width: 100%;height: 400px;"></div>
 <!--=============================产品======================================-->
 <div id="product">
     <div class="container">
-        <h2 class="text-center padding">产品领域</h2>
+         <div class="titleBox padding">
+             <img src="/static/img/index/lineLeft.png" alt="" class="imgLeft">
+             <span class="words">产品中心</span>
+             <img src="/static/img/index/lineRight.png" alt="" class="imgRight">
+         </div>
+
             {volist name="procate" id="v"}
             {if $i%2 == 0}
                 <div class="row productItem">
@@ -107,12 +112,16 @@
     </div>
 </div>
 <!--============================色带===================================-->
-<div class="segmentation marginTop" style="background: url('/static/img/index/index2.png');width: 100%;height: 400px;"></div>
+<div class="segmentation marginTop" style="background: url('/static/img/index/index2.png') center center;width: 100%;height: 400px;"></div>
 <!--==============================新闻=================================-->
 <div id="news">
     <div class="container">
-        <h2 class="text-center padding">新闻中心</h2>
-        <div class="row">
+        <div class="titleBox padding">
+            <img src="/static/img/index/lineLeft.png" alt="" class="imgLeft">
+            <span class="words">新闻中心</span>
+            <img src="/static/img/index/lineRight.png" alt="" class="imgRight">
+        </div>
+        <div class="row" style="margin-top:50px;">
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="newImg">
                     <div class="row">
@@ -147,12 +156,16 @@
     </div>
 </div>
 <!--============================色带===================================-->
-<div class="segmentation marginTop" style="background: url('/static/img/index/index3.png');width: 100%;height: 400px;"></div>
+<div class="segmentation marginTop" style="background: url('/static/img/index/index3.png') center center;width: 100%;height: 400px;"></div>
 <!--=============================知识问答======================================-->
 <div id="knowledge">
     <div class="container">
-        <h2 class="text-center padding">知识问答</h2>
-        <div class="row">
+        <div class="titleBox padding">
+            <img src="/static/img/index/lineLeft.png" alt="" class="imgLeft">
+            <span class="words">知识问答</span>
+            <img src="/static/img/index/lineRight.png" alt="" class="imgRight">
+        </div>
+        <div class="row" style="margin-top:50px;">
             <div class="col-md-6 col-sm-6 col-xs-12">
                 {volist name="ask" id="v" mod="2"}
                 {eq name="mod" value="1"}
@@ -178,12 +191,16 @@
 </div>
 
 <!--============================色带===================================-->
-<div class="segmentation marginTop" style="background: url('/static/img/index/index5.png');width: 100%;height: 400px;"></div>
+<div class="segmentation marginTop" style="background: url('/static/img/index/index5.png') center center;width: 100%;height: 400px;"></div>
 <!--================================友情链接===================================-->
 <div id="link">
     <div class="container">
-        <h2 class="text-center padding">友情链接</h2>
-        <div class="row">
+        <div class="titleBox padding">
+            <img src="/static/img/index/lineLeft.png" alt="" class="imgLeft">
+            <span class="words">友情链接</span>
+            <img src="/static/img/index/lineRight.png" alt="" class="imgRight">
+        </div>
+        <div class="row" style="margin-top:50px;">
             <div class="swiper-container" >
                 <div class="swiper-wrapper">
                     <div class="swiper-slide linkBg">

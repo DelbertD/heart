@@ -218,6 +218,24 @@
     transform: scale3d(0.5, 0.5, 1);
   }
 }
+/*===================================大标题===============================*/
+.titleBox{
+  overflow: hidden;text-align: center;height:38px;display: flex;align-items: center;justify-content: center;width:100%
+}
+.imgLeft{
+  width:400px;height:38px;display: inline-block;
+  float: left;
+}
+.imgRight{
+  width:400px;height:38px;display: inline-block;
+  float: left;
+}
+.words{
+  float: left;width:123px;text-align: center;height:38px;line-height: 38px;font-size:24px;
+}
+.marginBottom{
+  margin-bottom:50px;
+}
 /*===============================服务项目================================*/
 #service .title{
    color:#56bc94;
@@ -261,6 +279,7 @@
 .segmentation{
    width:100%;
    background-color: #56bc94;
+   background-position:center center;
    text-align: center;
    line-height:30px;
    display: inline-block;

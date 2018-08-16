@@ -124,7 +124,9 @@ var displacementSlider = function displacementSlider(opts) {
         });
     };
     function show(){
+        console.log(document.getElementById('pagination').querySelectorAll('.active')[0]);
         var activeSlide  = document.getElementById('pagination').querySelectorAll('.active')[0].getAttribute("data-slide");
+
         var buttonLength = document.getElementById('pagination').getElementsByClassName("button").length;
         //获取第几个是active
         var index = parseInt(activeSlide);
