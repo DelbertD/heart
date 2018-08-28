@@ -219,20 +219,53 @@
   }
 }
 /*===================================大标题===============================*/
-.titleBox{
-  overflow: hidden;text-align: center;height:38px;display: flex;align-items: center;justify-content: center;width:100%;padding-top: 60px;
+@media screen and (max-width: 960px){
+  .titleBox{
+    overflow: hidden;
+    text-align: center;
+    height:38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    padding-top: 60px;
+  }
+  .imgLeft{
+    width:80px;height:18px;display: inline-block;
+    float: left;
+  }
+  .imgRight{
+    width:80px;height:18px;display: inline-block;
+    float: left;
+  }
+  .words{
+    float: left;width:100px;text-align: center;height:38px;line-height: 38px;font-size:16px;
+  }
 }
-.imgLeft{
-  width:200px;height:38px;display: inline-block;
-  float: left;
+@media screen and (min-width:960px) {
+  .titleBox{
+    overflow: hidden;
+    text-align: center;
+    height:38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    padding-top: 60px;
+  }
+  .imgLeft{
+    width:200px;height:38px;display: inline-block;
+    float: left;
+  }
+  .imgRight{
+    width:200px;height:38px;display: inline-block;
+    float: left;
+  }
+  .words{
+    float: left;width:200px;text-align: center;height:38px;line-height: 38px;font-size:24px;
+  }
 }
-.imgRight{
-  width:200px;height:38px;display: inline-block;
-  float: left;
-}
-.words{
-  float: left;width:200px;text-align: center;height:38px;line-height: 38px;font-size:24px;
-}
+
 .marginBottom{
   margin-bottom:50px;
 }
@@ -322,11 +355,21 @@ a{
   margin:8px 8px 0 0 ;
   background: #666;
 }
-#news .num-box li a{
-  display: block;
-  width:2px;
-  height:70px;
-  color:#FFF;
+@media screen and (max-width: 960px){
+  #news .num-box li a{
+    display: block;
+    width:2px;
+    height:32px;
+    color:#FFF;
+  }
+}
+@media screen and (min-width:960px) {
+  #news .num-box li a{
+    display: block;
+    width:2px;
+    height:70px;
+    color:#FFF;
+  }
 }
 #news .num-box li.active{
   background:#56bc94;
