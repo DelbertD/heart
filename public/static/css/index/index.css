@@ -220,18 +220,18 @@
 }
 /*===================================大标题===============================*/
 .titleBox{
-  overflow: hidden;text-align: center;height:38px;display: flex;align-items: center;justify-content: center;width:100%
+  overflow: hidden;text-align: center;height:38px;display: flex;align-items: center;justify-content: center;width:100%;padding-top: 60px;
 }
 .imgLeft{
-  width:400px;height:38px;display: inline-block;
+  width:200px;height:38px;display: inline-block;
   float: left;
 }
 .imgRight{
-  width:400px;height:38px;display: inline-block;
+  width:200px;height:38px;display: inline-block;
   float: left;
 }
 .words{
-  float: left;width:123px;text-align: center;height:38px;line-height: 38px;font-size:24px;
+  float: left;width:200px;text-align: center;height:38px;line-height: 38px;font-size:24px;
 }
 .marginBottom{
   margin-bottom:50px;
@@ -335,12 +335,20 @@ a{
    border-bottom:1px dashed #ddd;
    padding: 15px 5px;
 }
-
+#news .newsItem:nth-of-type(1){
+  padding-top:0;
+}
 #news .newsItem a {
   letter-spacing: 2px;
   color: #56BC94;
+  text-decoration: none;
 }
-
+#news .newsItem:hover .question{
+  text-decoration: underline;
+}
+#news .newsItem:hover span{
+  text-decoration: none;
+}
 #news .newsItem a h4 {
   overflow: hidden;
 }
@@ -348,7 +356,9 @@ a{
 #news .newsItem a span {
   color: #7F7F7F;
 }
-
+.newsPic{
+  width:100%;
+}
 .answer {
   text-indent: 2em;
 
@@ -592,6 +602,9 @@ a{
   -webkit-line-clamp:2;
 }
 /*====================================友情链接======================================*/
+#link{
+  padding-bottom:50px;
+}
 #link .linkBg{
   overflow: hidden;
 }

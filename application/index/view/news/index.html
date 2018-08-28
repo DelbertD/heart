@@ -3,6 +3,8 @@
 <link rel="stylesheet" href="/static/css/index/news.css">
 {/block}
 {block name="con"}
+
+
 <div class="segmentation" style="height:300px;background: url('/static/img/index/index7.png');">
     <div class="container" style="position: relative;width:100%;height:100%;margin:0;padding:0">
         <div class="parent1" style="position: absolute;bottom:30px;">
@@ -20,33 +22,35 @@
             {volist name="news.list" id="v" mod="2"}
             {eq name="mod" value="1"}
         <div class="row newsListItem">
-            <div class="col-md-4 col-sm-3 col-xs-12">
+            <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="newsListImg IMG">
                     <a href="{:url('index/News/show',['id'=>$v['id']])}"><img style="border: 1px dashed #828282;padding: 5px;border-radius: 3px;" src="{$v.thumb}" title="{$v.title}" alt="{$v.alt}"></a>
                 </div>
             </div>
-            <div class="col-md-6  col-md-offset-2 col-sm-6 col-xs-12">
+            <div class="col-md-7  col-md-offset-1 col-sm-7 col-xs-12">
                 <div class="item">
                     <a href="{:url('index/News/show',['id'=>$v['id']])}"><h3 class="newsListTitle">{$v.name}</h3></a>
                     <p class="newsListTime">发布时间：{$v.addtime|date="Y-m-d",###}</p>
-                    <p class="newsListDetial">
-                        {$v.abs}
-                    </p>
+                    <div class="newsLiseDetial">
+                        <span>{$v.abs}</span>
+                    </div>
                 </div>
             </div>
         </div>
             {else/}
         <div class="row newsListItem">
-            <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="col-md-7 col-sm-7 col-xs-12">
                 <div class="item">
-                    <!--<a href="{:url('index/News/show',['id'=>$v['id']])}"><h3 class="newsListTitle">{$v.name}</h3></a>-->
+                    <a href="{:url('index/News/show',['id'=>$v['id']])}"><h3 class="newsListTitle">{$v.name}</h3></a>
                     <p class="newsListTime">发布时间：{$v.addtime|date="Y-m-d",###}</p>
-                    <p class="newsListDetial">
-                        {$v.abs}
-                    </p>
+                    <div class="newsLiseDetial">
+                        <span>
+                           {$v.abs}
+                        </span>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-3 col-md-offset-2 col-xs-12">
+            <div class="col-md-4 col-sm-4 col-md-offset-1 col-xs-12">
                 <div class="newsListImg IMG">
                     <a href="{:url('index/News/show',['id'=>$v['id']])}"><img style="border: 1px dashed #828282;padding: 5px;border-radius: 3px;" src="{$v.thumb}" title="{$v.title}" alt="{$v.alt}"></a>
                 </div>
@@ -62,5 +66,10 @@
         </div>
     </div>
 </div>
+{/block}
+{block name="script"}
+<script>
+    $("img").attr("data-tag","imageSharePreview");
+</script>
 {/block}
 

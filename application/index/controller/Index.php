@@ -39,7 +39,7 @@ class Index extends Main
             ->select();
         $lNews = db('news')
             ->order('sort,id desc')
-            ->limit(5,8)
+            ->limit(4)
             ->select();
         //获取知识问答
         $ask = db('ask')

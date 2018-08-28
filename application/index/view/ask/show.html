@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="/static/css/index/news.css">
 {/block}
 {block name="con"}
-<div class="segmentation" style="height:300px;background-color: #d0d6d6;">
+<div class="segmentation" style="height:300px;background: url('/static/img/index/ask.png');">
 
 </div>
 <div id="newsList">
@@ -22,4 +22,9 @@
         </div>
     </div>
 </div>
+{/block}
+{block name="script"}
+<script>
+    $("img").attr("data-tag","imageSharePreview");
+</script>
 {/block}

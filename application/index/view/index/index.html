@@ -86,7 +86,7 @@
                         </div>
                         <div class="col-md-5 col-md-offset-1 col-sm-3 col-xs-12">
                             <div class="productImg">
-                                <img src="{$v.thumb}" alt="{$v.alt}" title="{$v.title}">
+                                <img src="{$v.thumb}" alt="{$v.alt}" title="{$v.title}" data-tag="imageSharePreview">
                             </div>
                         </div>
                 </div>
@@ -94,7 +94,7 @@
                 <div class="row productItem">
                     <div class="col-md-5 col-sm-3 col-xs-12">
                         <div class="productImg">
-                            <img style="border: none;" src="{$v.thumb}" alt="{$v.alt}" title="{$v.title}">
+                            <img style="border: none;" src="{$v.thumb}" alt="{$v.alt}" title="{$v.title}"  data-tag="imageSharePreview">
                         </div>
                     </div>
                     <div class="col-md-6 col-md-offset-1 col-sm-6 col-xs-12">
@@ -129,7 +129,11 @@
                             <div class="col-md-10 col-sm-10 col-xs-10">
                                 <ul class="pic-box" id="newsBanner">
                                     {volist name="pNews" id="v"}
-                                    <li><a href="{:url('index/News/show',['id'=>$v['id']])}"><img style="padding: 8px;border: 1px solid #EEEEEE;border-radius: 5px" src="{$v.thumb}" title="{$v.title}" alt="{$v.alt}" class="newsPic"></a></li>
+                                    <li>
+                                        <a href="{:url('index/News/show',['id'=>$v['id']])}">
+                                           <img  data-tag="imageSharePreview" style="padding: 8px;border: 1px solid #EEEEEE;border-radius: 5px" src="{$v.thumb}" title="{$v.title}" alt="{$v.alt}" class="newsPic">
+                                        </a>
+                                    </li>
                                     {/volist}
                                 </ul>
                             </div>
@@ -246,6 +250,7 @@
 <!--<script type="text/javascript" src="/static/js/index/bocfe.js"></script>-->
 <!--<script type="text/javascript" src="/static/js/index/index.js"></script>-->
 <script type="text/javascript">
+    $("#pagination .button").eq(0).addClass("active");
     resize();
     $(window).resize(function() {
         resize();
@@ -289,6 +294,13 @@
             $("#link .swiper-button-next").css("right","-20px");
         }
     }
+    //设置新闻得宽高比
+    var newsPic  = $("#newsBanner .newsPic");
+    var newsPicW = newsPic.width();
+    newsPic.width(parseInt(newsPicW));
+    newsPicW = newsPic.width();
+    console.log(parseInt(newsPicW));
+    newsPic.height(newsPicW/4*3);
 </script>
 <script type="text/javascript">
     $('.nav-toggle').click(function () {

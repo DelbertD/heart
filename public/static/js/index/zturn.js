@@ -12,9 +12,7 @@
  		this.auto_play()
  		return this
  	};
-	 console.log( window.screen.width);
 	 if(window.screen.width>720){
-		 console.log("电脑");
 		 zturn.prototype={
 			 constructor:zturn,
 			 init:function(){
